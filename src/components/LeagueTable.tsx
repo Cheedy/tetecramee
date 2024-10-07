@@ -69,9 +69,9 @@ const LeagueTable: React.FC = () => {
         </thead>
         <tbody>
           {teams.map((team, index) => (
-            <tr key={team.IdEquipe} className={`border-b border-gray-700 ${team.Nom === 'FC TETE CRAMEE' ? 'bg-orange-900 bg-opacity-50' : ''}`}>
+            <tr key={team.IdEquipe} className={`border-b border-gray-700 ${team.Nom === 'TETE CRAMEE FC' ? 'bg-orange-900 bg-opacity-50' : ''}`}>
               <td className="py-2 px-4">{index + 1}</td>
-              <td className="py-2 px-4 font-medium">{team.Nom}</td>
+              <td className={`py-2 px-4 font-medium ${team.Nom === 'TETE CRAMEE FC' ? 'font-bold text-orange-500' : ''}`}>{team.Nom}</td>
               <td className="py-2 px-4">{team.Victoire + team.Egalite + team.Defaite}</td>
               <td className="py-2 px-4">{team.Victoire}</td>
               <td className="py-2 px-4">{team.Egalite}</td>

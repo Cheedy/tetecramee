@@ -33,23 +33,23 @@ const Statistics: React.FC = () => {
         </button>
       </div>
 
-      <div className="bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+      <div className="bg-gray-800 rounded-lg shadow-lg overflow-x-auto">
         <table className="w-full">
           <thead>
             <tr className="bg-gray-700 text-gray-200">
-              <th className="px-4 py-2 text-left">Rang</th>
-              <th className="px-4 py-2 text-left">Joueur</th>
-              <th className="px-4 py-2 text-left">Poste</th>
-              <th className="px-4 py-2 text-right">{activeTab === 'buteurs' ? 'Buts' : 'Passes décisives'}</th>
+              <th className="px-2 sm:px-4 py-2 text-left">Rang</th>
+              <th className="px-2 sm:px-4 py-2 text-left">Joueur</th>
+              <th className="px-2 sm:px-4 py-2 text-left">Poste</th>
+              <th className="px-2 sm:px-4 py-2 text-right">{activeTab === 'buteurs' ? 'Buts' : 'Passes décisives'}</th>
             </tr>
           </thead>
           <tbody>
             {sortedPlayers.map((player, index) => (
               <tr key={player.id} className="border-b border-gray-700">
-                <td className="px-4 py-2 text-gray-300">{index + 1}</td>
-                <td className="px-4 py-2 text-white">{player.joueur}</td>
-                <td className="px-4 py-2 text-gray-300">{player.poste}</td>
-                <td className="px-4 py-2 text-right text-white font-bold">
+                <td className="px-2 sm:px-4 py-2 text-gray-300">{index + 1}</td>
+                <td className="px-2 sm:px-4 py-2 text-white">{player.joueur}</td>
+                <td className="px-2 sm:px-4 py-2 text-gray-300">{player.poste}</td>
+                <td className="px-2 sm:px-4 py-2 text-right text-white font-bold">
                   {activeTab === 'buteurs' ? player.buts : player.assists}
                 </td>
               </tr>
