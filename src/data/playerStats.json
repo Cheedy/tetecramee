@@ -1,0 +1,9 @@
+[
+  {"id": 1, "joueur": "Mohamed", "poste": "Attaquant", "assists": 0, "buts": 6, "clean_sheets": 0},
+  {"id": 2, "joueur": "Abdou", "poste": "Défenseur", "assists": 0, "buts": 1, "clean_sheets": 0},
+  {"id": 3, "joueur": "Abdel", "poste": "Milieu", "assists": 0, "buts": 2, "clean_sheets": 0},
+  {"id": 4, "joueur": "Raid", "poste": "Défenseur", "assists": 0, "buts": 1, "clean_sheets": 0},
+  {"id": 5, "joueur": "Kamel", "poste": "Attaquant", "assists": 0, "buts": 3, "clean_sheets": 0},
+  {"id": 6, "joueur": "Mido", "poste": "Attaquant", "assists": 0, "buts": 2, "clean_sheets": 0},
+  {"id": 7, "joueur": "Othmane", "poste": "Milieu", "assists": 0, "buts": 0, "clean_sheets": 0}
+]
