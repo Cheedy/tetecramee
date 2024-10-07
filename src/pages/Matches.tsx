@@ -60,11 +60,11 @@ const Matches: React.FC = () => {
     const opponentScore = isTeteCrameeHome ? match.Scoreext : match.Scoredom;
 
     if (teteCrameeScore > opponentScore) {
-      return <span className="bg-green-500 text-white font-bold py-1 px-3 rounded-full text-xs">Victoire</span>;
+      return <span className="bg-green-500 text-white font-bold py-1 px-2 rounded-full text-xs">Victoire</span>;
     } else if (teteCrameeScore < opponentScore) {
-      return <span className="bg-red-500 text-white font-bold py-1 px-3 rounded-full text-xs">Défaite</span>;
+      return <span className="bg-red-500 text-white font-bold py-1 px-2 rounded-full text-xs">Défaite</span>;
     } else {
-      return <span className="bg-gray-500 text-white font-bold py-1 px-3 rounded-full text-xs">Nul</span>;
+      return <span className="bg-gray-500 text-white font-bold py-1 px-2 rounded-full text-xs">Nul</span>;
     }
   }
 
@@ -85,51 +85,52 @@ const Matches: React.FC = () => {
   }
 
   return (
-    <div className="space-y-8">
-      <h1 className="text-3xl font-bold text-orange-500 mb-6">Tous les matchs</h1>
+    <div className="space-y-4">
+      <h1 className="text-2xl sm:text-3xl font-bold text-orange-500 mb-4">Tous les matchs</h1>
       {matches.map((match, index) => {
         const matchDate = new Date(parseInt(match.Date.slice(6, -2)))
         const isPlayed = match.Scoredom !== null && match.Scoreext !== null
         const isTeteCrameeInvolved = match.Equipedom === TEAM_NAME || match.Equipeext === TEAM_NAME
         return (
-          <div key={index} className="bg-gray-800 rounded-lg shadow-lg p-6 grid items-center grid-cols-10 gap-4">
-            <div className="col-span-2 flex items-center space-x-4">
-              <img 
-                src={getImageUrl(match.Logodom)}
-                alt={match.Equipedom} 
-                className="w-12 h-12 object-cover rounded-full"
-              />
-              <p className={getTeamNameClass(match.Equipedom)}>
-                {match.Equipedom}
-              </p>
+          <div key={index} className="bg-gray-800 rounded-lg shadow-lg p-2 sm:p-4">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center space-x-1 sm:space-x-2 w-1/3">
+                <img 
+                  src={getImageUrl(match.Logodom)}
+                  alt={match.Equipedom} 
+                  className="w-6 h-6 sm:w-8 sm:h-8 object-cover rounded-full"
+                />
+                <p className={`${getTeamNameClass(match.Equipedom)} text-xs sm:text-sm truncate`}>
+                  {match.Equipedom}
+                </p>
+              </div>
+              <div className="flex flex-col items-center justify-center w-1/3">
+                <p className="text-xs text-gray-400">
+                  {matchDate.toLocaleDateString('fr-FR', { day: 'numeric', month: 'numeric' })}
+                </p>
+                {isPlayed ? (
+                  <p className="text-sm sm:text-base font-bold">{match.Scoredom} - {match.Scoreext}</p>
+                ) : (
+                  <p className="text-sm sm:text-base font-bold">VS</p>
+                )}
+                <p className="text-xs text-gray-400 truncate">{match.Terrain}</p>
+              </div>
+              <div className="flex items-center space-x-1 sm:space-x-2 justify-end w-1/3">
+                <p className={`${getTeamNameClass(match.Equipeext)} text-xs sm:text-sm text-right truncate`}>
+                  {match.Equipeext}
+                </p>
+                <img 
+                  src={getImageUrl(match.Logoext)}
+                  alt={match.Equipeext} 
+                  className="w-6 h-6 sm:w-8 sm:h-8 object-cover rounded-full"
+                />
+              </div>
             </div>
-            <div className="col-span-1 text-center">
-              {isPlayed && <p className="text-2xl font-bold">{match.Scoredom}</p>}
-            </div>
-            <div className="col-span-4 text-center">
-              <p className="text-sm text-gray-400">
-                {matchDate.toLocaleDateString('fr-FR', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
-              </p>
-              <p className="text-sm text-gray-400">
-                {matchDate.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })}
-              </p>
-              {!isPlayed && <p className="text-xl font-bold mt-2">VS</p>}
-              <p className="text-xs mt-1 mb-2">{match.Terrain}</p>
-              {isTeteCrameeInvolved && isPlayed && getMatchResult(match)}
-            </div>
-            <div className="col-span-1 text-center">
-              {isPlayed && <p className="text-2xl font-bold">{match.Scoreext}</p>}
-            </div>
-            <div className="col-span-2 flex items-center space-x-4 justify-self-end">
-              <p className={getTeamNameClass(match.Equipeext)}>
-                {match.Equipeext}
-              </p>
-              <img 
-                src={getImageUrl(match.Logoext)}
-                alt={match.Equipeext} 
-                className="w-12 h-12 object-cover rounded-full"
-              />
-            </div>
+            {isTeteCrameeInvolved && isPlayed && (
+              <div className="mt-1 flex justify-center">
+                {getMatchResult(match)}
+              </div>
+            )}
           </div>
         )
       })}
