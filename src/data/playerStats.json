@@ -28,7 +28,7 @@
     "joueur": "Raid",
     "poste": "Défenseur",
     "assists": 2,
-    "buts": 2,
+    "buts": 3,
     "clean_sheets": 0
   },
   {
@@ -75,7 +75,7 @@
     "id": 10,
     "joueur": "Tayssir",
     "poste": "Gardien",
-    "assists": 0,
+    "assists": 1,
     "buts": 0,
     "clean_sheets": 0
   },
@@ -85,6 +85,14 @@
     "poste": "Millieu",
     "assists": 0,
     "buts": 0,
+    "clean_sheets": 0
+  },
+  {
+    "id": 12,
+    "joueur": "Mams",
+    "poste": "Millieu",
+    "assists": 0,
+    "buts": 1,
     "clean_sheets": 0
   }
 ]
