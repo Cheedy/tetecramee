@@ -24,7 +24,7 @@
     "assists": 2,
     "buts": 10,
     "clean_sheets": 0,
-    "matchs": 9
+    "matchs": 5
   },
   {
     "id": 4,
@@ -87,7 +87,7 @@
     "assists": 5,
     "buts": 0,
     "clean_sheets": 0,
-    "matchs": 8
+    "matchs": 5
   },
   {
     "id": 11,
@@ -96,7 +96,7 @@
     "assists": 0,
     "buts": 0,
     "clean_sheets": 0,
-    "matchs": 5
+    "matchs": 2
   },
   {
     "id": 12,
@@ -105,15 +105,15 @@
     "assists": 0,
     "buts": 1,
     "clean_sheets": 0,
-    "matchs": 4
+    "matchs": 2
   },
   {
     "id": 13,
-    "joueur": "Mamoudou",
+    "joueur": "Moussa",
     "poste": "Attaquant",
     "assists": 1,
     "buts": 1,
     "clean_sheets": 0,
-    "matchs": 3
+    "matchs": 1
   }
 ]
