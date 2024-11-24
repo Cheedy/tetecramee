@@ -12,19 +12,19 @@
     "id": 2,
     "joueur": "Abdou",
     "poste": "Défenseur",
-    "assists": 1,
-    "buts": 1,
+    "assists": 4,
+    "buts": 2,
     "clean_sheets": 0,
-    "matchs": 5
+    "matchs": 7
   },
   {
     "id": 3,
     "joueur": "Abdel",
     "poste": "Milieu",
     "assists": 2,
-    "buts": 5,
+    "buts": 10,
     "clean_sheets": 0,
-    "matchs": 5
+    "matchs": 9
   },
   {
     "id": 4,
@@ -33,7 +33,7 @@
     "assists": 4,
     "buts": 3,
     "clean_sheets": 0,
-    "matchs": 6
+    "matchs": 9
   },
   {
     "id": 5,
@@ -51,7 +51,7 @@
     "assists": 3,
     "buts": 4,
     "clean_sheets": 0,
-    "matchs": 6
+    "matchs": 9
   },
   {
     "id": 7,
@@ -60,7 +60,7 @@
     "assists": 0,
     "buts": 0,
     "clean_sheets": 0,
-    "matchs": 3
+    "matchs": 6
   },
   {
     "id": 8,
@@ -69,25 +69,25 @@
     "assists": 0,
     "buts": 0,
     "clean_sheets": 0,
-    "matchs": 6
+    "matchs": 8
   },
   {
     "id": 9,
     "joueur": "Achref",
     "poste": "Millieu",
-    "assists": 0,
-    "buts": 0,
+    "assists": 1,
+    "buts": 1,
     "clean_sheets": 0,
-    "matchs": 2
+    "matchs": 4
   },
   {
     "id": 10,
     "joueur": "Tayssir",
     "poste": "Gardien",
-    "assists": 1,
+    "assists": 5,
     "buts": 0,
-    "clean_sheets": 0,
-    "matchs": 5
+    "clean_sheets": 1,
+    "matchs": 8
   },
   {
     "id": 11,
@@ -96,7 +96,7 @@
     "assists": 0,
     "buts": 0,
     "clean_sheets": 0,
-    "matchs": 2
+    "matchs": 5
   },
   {
     "id": 12,
@@ -105,15 +105,15 @@
     "assists": 0,
     "buts": 1,
     "clean_sheets": 0,
-    "matchs": 2
+    "matchs": 4
   },
   {
     "id": 13,
     "joueur": "Mamoudou",
     "poste": "Attaquant",
-    "assists": 0,
-    "buts": 0,
+    "assists": 1,
+    "buts": 1,
     "clean_sheets": 0,
-    "matchs": 1
+    "matchs": 3
   }
 ]
