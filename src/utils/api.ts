@@ -123,9 +123,9 @@ export const getSecureImageUrl = (logoName: string): string => {
 export const getTeamLogo = (logoName: string | null, teamName?: string): string => {
   // Logos spécifiques par nom d'équipe
   const teamLogos: { [key: string]: string } = {
-    "BLACK PANAMA FC": "http://www.football-loisir-amateur.com/Content/images/LogoTeam/BPFC%20-%20Logo%20blanc%20sur%20noir.png",
-    "TETE CRAMEE FC": "http://www.football-loisir-amateur.com/Content/images/LogoTeam/IMG_4511.png",
-    "LAS ALPACAS": "http://www.football-loisir-amateur.com/Content/images/LogoTeam/47572484_578497172579041_5205478604447678464_n.jpg"
+    "BLACK PANAMA FC": "https://i.imgur.com/Dnepiih.png",
+    "TETE CRAMEE FC": "https://i.imgur.com/emlZEjD.png",
+    "LAS ALPACAS": "https://i.imgur.com/i684d6j.jpeg"
   };
 
   // Si on a un nom d'équipe et qu'il correspond à nos logos spécifiques
