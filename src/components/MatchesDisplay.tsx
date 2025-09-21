@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { fetchNextAndLastMatch } from '../utils/api';
+import { fetchNextAndLastMatch, getTeamLogo } from '../utils/api';
 import { Loader2 } from 'lucide-react';
 
 interface MatchData {
@@ -33,12 +33,6 @@ const MatchesDisplay: React.FC = () => {
     loadMatches();
   }, []);
 
-  const getImageUrl = (logo: string | null) => {
-    if (!logo) {
-      return "https://i.imgur.com/rkCZV39.png";
-    }
-    return `https://www-football--loisir--amateur-com.translate.goog/Content/images/LogoTeam/${logo}?_x_tr_sch=http&_x_tr_sl=auto&_x_tr_tl=fr&_x_tr_hl=fr&_x_tr_pto=wapp`;
-  };
 
   if (loading) {
     return (
@@ -59,7 +53,14 @@ const MatchesDisplay: React.FC = () => {
   const MatchCard: React.FC<{ match: MatchData | null, title: string }> = ({ match, title }) => {
     if (!match) return null;
 
-    const matchDate = new Date(parseInt(match.Date.slice(6, -2)));
+    // Gérer les dates nulles
+    const getFormattedDate = () => {
+      if (!match.Date || match.Date === null) {
+        return "Date à déterminer";
+      }
+      const matchDate = new Date(parseInt(match.Date.slice(6, -2)));
+      return matchDate.toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' });
+    };
 
     return (
       <div className="relative mb-4 md:mb-0 md:w-1/2">
@@ -74,7 +75,7 @@ const MatchesDisplay: React.FC = () => {
           <div className="flex items-center justify-center space-x-4 mb-2">
             <div className="flex flex-col items-center">
               <div className="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center text-black font-bold overflow-hidden">
-                <img src={getImageUrl(match.Logodom)} alt={match.Equipedom} className="w-full h-full object-cover" />
+                <img src={getTeamLogo(match.Logodom, match.Equipedom)} alt={match.Equipedom} className="w-full h-full object-cover" />
               </div>
               <span className="mt-1 text-xs">{match.Equipedom}</span>
             </div>
@@ -83,12 +84,12 @@ const MatchesDisplay: React.FC = () => {
                 {match.Scoredom !== null ? `${match.Scoredom} - ${match.Scoreext}` : 'VS'}
               </span>
               <span className="text-xs">
-                {matchDate.toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' })}
+                {getFormattedDate()}
               </span>
             </div>
             <div className="flex flex-col items-center">
               <div className="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center text-black font-bold overflow-hidden">
-                <img src={getImageUrl(match.Logoext)} alt={match.Equipeext} className="w-full h-full object-cover" />
+                <img src={getTeamLogo(match.Logoext, match.Equipeext)} alt={match.Equipeext} className="w-full h-full object-cover" />
               </div>
               <span className="mt-1 text-xs">{match.Equipeext}</span>
             </div>

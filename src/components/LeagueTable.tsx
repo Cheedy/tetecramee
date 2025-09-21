@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { fetchLeagueTable } from '../utils/api'
+import { fetchLeagueTable, getTeamLogo } from '../utils/api'
 import { Loader2 } from 'lucide-react'
 
 interface TeamData {
@@ -71,7 +71,16 @@ const LeagueTable: React.FC = () => {
           {teams.map((team, index) => (
             <tr key={team.IdEquipe} className={`border-b border-gray-700 ${team.Nom === 'TETE CRAMEE FC' ? 'bg-orange-900 bg-opacity-50' : ''}`}>
               <td className="py-2 px-4">{index + 1}</td>
-              <td className={`py-2 px-4 font-medium ${team.Nom === 'TETE CRAMEE FC' ? 'font-bold text-orange-500' : ''}`}>{team.Nom}</td>
+              <td className={`py-2 px-4 font-medium ${team.Nom === 'TETE CRAMEE FC' ? 'font-bold text-orange-500' : ''}`}>
+                <div className="flex items-center space-x-2">
+                  <img 
+                    src={getTeamLogo(null, team.Nom)} 
+                    alt={team.Nom} 
+                    className="w-6 h-6 object-cover rounded-full"
+                  />
+                  <span>{team.Nom}</span>
+                </div>
+              </td>
               <td className="py-2 px-4">{team.Victoire + team.Egalite + team.Defaite}</td>
               <td className="py-2 px-4">{team.Victoire}</td>
               <td className="py-2 px-4">{team.Egalite}</td>

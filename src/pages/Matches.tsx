@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Loader2 } from 'lucide-react'
-import { UrlToGoogle, fetchMatches } from '../utils/api'
+import { fetchMatches, getTeamLogo } from '../utils/api'
 
 interface MatchData {
   Equipedom: string
@@ -28,12 +28,19 @@ const Matches: React.FC = () => {
       if ('error' in result) {
         setError(result.error);
       } else {
-        const sortedMatches = result.sort((a, b) => {
+        // Séparer les matchs avec et sans dates
+        const matchesWithDates = result.filter(match => match.Date && match.Date !== null);
+        const matchesWithoutDates = result.filter(match => !match.Date || match.Date === null);
+        
+        // Trier les matchs avec dates
+        const sortedMatchesWithDates = matchesWithDates.sort((a, b) => {
           const dateA = new Date(parseInt(a.Date.slice(6, -2)));
           const dateB = new Date(parseInt(b.Date.slice(6, -2)));
           return dateA.getTime() - dateB.getTime();
         });
-        setMatches(sortedMatches);
+        
+        // Combiner : matchs triés + matchs sans dates à la fin
+        setMatches([...sortedMatchesWithDates, ...matchesWithoutDates]);
       }
       setLoading(false);
     };
@@ -41,12 +48,6 @@ const Matches: React.FC = () => {
     loadMatches();
   }, [])
 
-  const getImageUrl = (logo: string | null) => {
-    if (!logo) {
-      return "https://i.imgur.com/rkCZV39.png";
-    }
-    return UrlToGoogle(`http://www.football-loisir-amateur.com/Content/images/LogoTeam/${logo}`) + "?_x_tr_sch=http&_x_tr_sl=auto&_x_tr_tl=fr&_x_tr_hl=fr&_x_tr_pto=wapp";
-  }
 
   const getTeamNameClass = (teamName: string) => {
     return teamName === TEAM_NAME ? 'text-orange-500 font-bold' : 'font-bold';
@@ -88,7 +89,15 @@ const Matches: React.FC = () => {
     <div className="space-y-4">
       <h1 className="text-2xl sm:text-3xl font-bold text-orange-500 mb-4">Tous les matchs</h1>
       {matches.map((match, index) => {
-        const matchDate = new Date(parseInt(match.Date.slice(6, -2)))
+        // Gérer les dates nulles
+        const getFormattedDate = () => {
+          if (!match.Date || match.Date === null) {
+            return "Date à déterminer";
+          }
+          const matchDate = new Date(parseInt(match.Date.slice(6, -2)));
+          return matchDate.toLocaleDateString('fr-FR', { day: 'numeric', month: 'numeric' });
+        };
+        
         const isPlayed = match.Scoredom !== null && match.Scoreext !== null
         const isTeteCrameeInvolved = match.Equipedom === TEAM_NAME || match.Equipeext === TEAM_NAME
         return (
@@ -96,7 +105,7 @@ const Matches: React.FC = () => {
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-1 sm:space-x-2 w-1/3">
                 <img 
-                  src={getImageUrl(match.Logodom)}
+                  src={getTeamLogo(match.Logodom, match.Equipedom)}
                   alt={match.Equipedom} 
                   className="w-6 h-6 sm:w-8 sm:h-8 object-cover rounded-full"
                 />
@@ -106,7 +115,7 @@ const Matches: React.FC = () => {
               </div>
               <div className="flex flex-col items-center justify-center w-1/3">
                 <p className="text-xs text-gray-400">
-                  {matchDate.toLocaleDateString('fr-FR', { day: 'numeric', month: 'numeric' })}
+                  {getFormattedDate()}
                 </p>
                 {isPlayed ? (
                   <p className="text-sm sm:text-base font-bold">{match.Scoredom} - {match.Scoreext}</p>
@@ -120,7 +129,7 @@ const Matches: React.FC = () => {
                   {match.Equipeext}
                 </p>
                 <img 
-                  src={getImageUrl(match.Logoext)}
+                  src={getTeamLogo(match.Logoext, match.Equipeext)}
                   alt={match.Equipeext} 
                   className="w-6 h-6 sm:w-8 sm:h-8 object-cover rounded-full"
                 />

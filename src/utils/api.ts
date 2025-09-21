@@ -41,10 +41,33 @@ export const fetchNextAndLastMatch = async (): Promise<{ nextMatch: MatchData | 
     }
 
     const now = new Date();
-    const sortedMatches = matches.sort((a, b) => new Date(parseInt(a.Date.slice(6, -2))).getTime() - new Date(parseInt(b.Date.slice(6, -2))).getTime());
+    
+    // Séparer les matchs avec et sans dates
+    const matchesWithDates = matches.filter(match => match.Date && match.Date !== null);
+    const matchesWithoutDates = matches.filter(match => !match.Date || match.Date === null);
+    
+    // Trier les matchs avec dates
+    const sortedMatches = matchesWithDates.sort((a, b) => {
+      const dateA = new Date(parseInt(a.Date.slice(6, -2)));
+      const dateB = new Date(parseInt(b.Date.slice(6, -2)));
+      return dateA.getTime() - dateB.getTime();
+    });
 
-    const nextMatch = sortedMatches.find(match => new Date(parseInt(match.Date.slice(6, -2))) > now) || null;
-    const lastMatch = sortedMatches.reverse().find(match => new Date(parseInt(match.Date.slice(6, -2))) < now && match.Scoredom !== null && match.Scoreext !== null) || null;
+    // Chercher le prochain match dans les matchs avec dates
+    let nextMatch = sortedMatches.find(match => {
+      const matchDate = new Date(parseInt(match.Date.slice(6, -2)));
+      return matchDate > now;
+    }) || null;
+    
+    // Si pas de prochain match avec date, prendre le premier sans date
+    if (!nextMatch && matchesWithoutDates.length > 0) {
+      nextMatch = matchesWithoutDates[0];
+    }
+    
+    const lastMatch = sortedMatches.reverse().find(match => {
+      const matchDate = new Date(parseInt(match.Date.slice(6, -2)));
+      return matchDate < now && match.Scoredom !== null && match.Scoreext !== null;
+    }) || null;
 
     return { nextMatch, lastMatch };
   } catch (error) {
@@ -95,4 +118,38 @@ export const getSecureImageUrl = (logoName: string): string => {
   const baseUrl = 'http://www.football-loisir-amateur.com/Content/images/LogoTeam/';
   const fullUrl = baseUrl + logoName;
   return UrlToGoogle(fullUrl) + "?_x_tr_sch=http&_x_tr_sl=auto&_x_tr_tl=fr&_x_tr_hl=fr&_x_tr_pto=wapp";
+};
+
+export const getTeamLogo = (logoName: string | null, teamName?: string): string => {
+  // Logos spécifiques par nom d'équipe
+  const teamLogos: { [key: string]: string } = {
+    "BLACK PANAMA FC": "http://www.football-loisir-amateur.com/Content/images/LogoTeam/BPFC%20-%20Logo%20blanc%20sur%20noir.png",
+    "TETE CRAMEE FC": "http://www.football-loisir-amateur.com/Content/images/LogoTeam/IMG_4511.png",
+    "LAS ALPACAS": "http://www.football-loisir-amateur.com/Content/images/LogoTeam/47572484_578497172579041_5205478604447678464_n.jpg"
+  };
+
+  // Si on a un nom d'équipe et qu'il correspond à nos logos spécifiques
+  if (teamName && teamLogos[teamName]) {
+    return teamLogos[teamName];
+  }
+
+  // Si pas de logo fourni, utiliser le logo par défaut
+  if (!logoName) {
+    return "http://www.football-loisir-amateur.com/Content/images/LogoTeam/Logo_default_team.png";
+  }
+
+  // Logos spécifiques par nom de fichier
+  const specificLogos: { [key: string]: string } = {
+    "BPFC - Logo blanc sur noir.png": "http://www.football-loisir-amateur.com/Content/images/LogoTeam/BPFC%20-%20Logo%20blanc%20sur%20noir.png",
+    "IMG_4511.png": "http://www.football-loisir-amateur.com/Content/images/LogoTeam/IMG_4511.png",
+    "47572484_578497172579041_5205478604447678464_n.jpg": "http://www.football-loisir-amateur.com/Content/images/LogoTeam/47572484_578497172579041_5205478604447678464_n.jpg"
+  };
+
+  // Vérifier si c'est un logo spécifique
+  if (specificLogos[logoName]) {
+    return specificLogos[logoName];
+  }
+
+  // Pour les autres équipes, utiliser le logo par défaut
+  return "http://www.football-loisir-amateur.com/Content/images/LogoTeam/Logo_default_team.png";
 };
