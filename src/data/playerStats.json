@@ -1,119 +1,98 @@
 [
   {
     "id": 1,
-    "joueur": "Mohamed",
-    "poste": "Attaquant",
-    "assists": 2,
-    "buts": 7,
-    "clean_sheets": 0,
-    "matchs": 4
+    "joueur": "Chedy",
+    "poste": "Défense",
+    "buts": 0,
+    "assists": 0,
+    "matchs": 0
   },
   {
     "id": 2,
-    "joueur": "Abdou",
-    "poste": "Défenseur",
-    "assists": 4,
-    "buts": 2,
-    "clean_sheets": 0,
-    "matchs": 7
+    "joueur": "Achref",
+    "poste": "Millieu",
+    "buts": 0,
+    "assists": 0,
+    "matchs": 0
   },
   {
     "id": 3,
     "joueur": "Abdel",
-    "poste": "Milieu",
-    "assists": 2,
-    "buts": 10,
-    "clean_sheets": 0,
-    "matchs": 9
+    "poste": "Millieu",
+    "buts": 0,
+    "assists": 0,
+    "matchs": 0
   },
   {
     "id": 4,
-    "joueur": "Raid",
-    "poste": "Défenseur",
-    "assists": 4,
-    "buts": 3,
-    "clean_sheets": 0,
-    "matchs": 9
+    "joueur": "Abdou",
+    "poste": "Défense",
+    "buts": 0,
+    "assists": 0,
+    "matchs": 0
   },
   {
     "id": 5,
-    "joueur": "Kamel",
-    "poste": "Attaquant",
+    "joueur": "Ahmed",
+    "poste": "Attaque",
+    "buts": 0,
     "assists": 0,
-    "buts": 3,
-    "clean_sheets": 0,
-    "matchs": 2
+    "matchs": 0
   },
   {
     "id": 6,
-    "joueur": "Mido",
-    "poste": "Attaquant",
-    "assists": 3,
-    "buts": 4,
-    "clean_sheets": 0,
-    "matchs": 9
+    "joueur": "Bactiar",
+    "poste": "Attaque",
+    "buts": 0,
+    "assists": 0,
+    "matchs": 0
   },
   {
     "id": 7,
     "joueur": "Othmane",
-    "poste": "Milieu",
-    "assists": 0,
+    "poste": "Millieu",
     "buts": 0,
-    "clean_sheets": 0,
-    "matchs": 6
+    "assists": 0,
+    "matchs": 0
   },
   {
     "id": 8,
-    "joueur": "Chedy",
-    "poste": "Défenseur",
-    "assists": 0,
+    "joueur": "Raïd",
+    "poste": "Défense",
     "buts": 0,
-    "clean_sheets": 0,
-    "matchs": 8
+    "assists": 0,
+    "matchs": 0
   },
   {
     "id": 9,
-    "joueur": "Achref",
+    "joueur": "Zinedine",
     "poste": "Millieu",
-    "assists": 1,
-    "buts": 1,
-    "clean_sheets": 0,
-    "matchs": 4
+    "buts": 0,
+    "assists": 0,
+    "matchs": 0
   },
   {
     "id": 10,
-    "joueur": "Tayssir",
+    "joueur": "Camara",
     "poste": "Gardien",
-    "assists": 5,
     "buts": 0,
-    "clean_sheets": 1,
-    "matchs": 8
+    "assists": 0,
+    "matchs": 0
   },
   {
     "id": 11,
-    "joueur": "Sirem",
+    "joueur": "Elias",
     "poste": "Millieu",
-    "assists": 0,
     "buts": 0,
-    "clean_sheets": 0,
-    "matchs": 5
+    "assists": 0,
+    "matchs": 0
   },
   {
     "id": 12,
-    "joueur": "Mams",
+    "joueur": "Rayen",
     "poste": "Millieu",
+    "buts": 0,
     "assists": 0,
-    "buts": 1,
-    "clean_sheets": 0,
-    "matchs": 4
-  },
-  {
-    "id": 13,
-    "joueur": "Mamoudou",
-    "poste": "Attaquant",
-    "assists": 1,
-    "buts": 1,
-    "clean_sheets": 0,
-    "matchs": 3
+    "matchs": 0
   }
 ]
