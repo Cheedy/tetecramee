@@ -99,7 +99,7 @@ export const UrlToGoogle = (url: string) => {
   for (let i = 0; i < p.length; i++) {
     if (i === 2) {
       t +=
-        p[i].replaceAll("-", "--").replaceAll(".", "-") +
+        p[i].replace(/-/g, "--").replace(/\./g, "-") +
         atob("LnRyYW5zbGF0ZS5nb29n") +
         "/";
     } else {
@@ -135,7 +135,7 @@ export const getTeamLogo = (logoName: string | null, teamName?: string): string 
 
   // Si pas de logo fourni, utiliser le logo par défaut
   if (!logoName) {
-    return "http://www.football-loisir-amateur.com/Content/images/LogoTeam/Logo_default_team.png";
+    return "https://i.imgur.com/DjGJJbB.png";
   }
 
   // Logos spécifiques par nom de fichier
