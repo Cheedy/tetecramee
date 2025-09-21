@@ -1,0 +1,156 @@
+[
+  {
+    "IdEquipe": 1,
+    "Nom": "ARZ FC",
+    "Points": 0,
+    "Victoire": 0,
+    "Egalite": 0,
+    "Defaite": 0,
+    "Bp": 0,
+    "Bc": 0,
+    "CinqDernier": ["", "", "", "", ""]
+  },
+  {
+    "IdEquipe": 2,
+    "Nom": "FCPS",
+    "Points": 0,
+    "Victoire": 0,
+    "Egalite": 0,
+    "Defaite": 0,
+    "Bp": 0,
+    "Bc": 0,
+    "CinqDernier": ["", "", "", "", ""]
+  },
+  {
+    "IdEquipe": 3,
+    "Nom": "MDJ FC",
+    "Points": 0,
+    "Victoire": 0,
+    "Egalite": 0,
+    "Defaite": 0,
+    "Bp": 0,
+    "Bc": 0,
+    "CinqDernier": ["", "", "", "", ""]
+  },
+  {
+    "IdEquipe": 4,
+    "Nom": "DEMOS FC",
+    "Points": 0,
+    "Victoire": 0,
+    "Egalite": 0,
+    "Defaite": 0,
+    "Bp": 0,
+    "Bc": 0,
+    "CinqDernier": ["", "", "", "", ""]
+  },
+  {
+    "IdEquipe": 5,
+    "Nom": "WOLF FC",
+    "Points": 0,
+    "Victoire": 0,
+    "Egalite": 0,
+    "Defaite": 0,
+    "Bp": 0,
+    "Bc": 0,
+    "CinqDernier": ["", "", "", "", ""]
+  },
+  {
+    "IdEquipe": 6,
+    "Nom": "FC HAB",
+    "Points": 0,
+    "Victoire": 0,
+    "Egalite": 0,
+    "Defaite": 0,
+    "Bp": 0,
+    "Bc": 0,
+    "CinqDernier": ["", "", "", "", ""]
+  },
+  {
+    "IdEquipe": 7,
+    "Nom": "FC FIVE",
+    "Points": 0,
+    "Victoire": 0,
+    "Egalite": 0,
+    "Defaite": 0,
+    "Bp": 0,
+    "Bc": 0,
+    "CinqDernier": ["", "", "", "", ""]
+  },
+  {
+    "IdEquipe": 8,
+    "Nom": "TOUT PUISSANT TOLOSA",
+    "Points": 0,
+    "Victoire": 0,
+    "Egalite": 0,
+    "Defaite": 0,
+    "Bp": 0,
+    "Bc": 0,
+    "CinqDernier": ["", "", "", "", ""]
+  },
+  {
+    "IdEquipe": 9,
+    "Nom": "LAS ALPACAS",
+    "Points": 0,
+    "Victoire": 0,
+    "Egalite": 0,
+    "Defaite": 0,
+    "Bp": 0,
+    "Bc": 0,
+    "CinqDernier": ["", "", "", "", ""]
+  },
+  {
+    "IdEquipe": 10,
+    "Nom": "INTERNATIONALE PARIS IV",
+    "Points": 0,
+    "Victoire": 0,
+    "Egalite": 0,
+    "Defaite": 0,
+    "Bp": 0,
+    "Bc": 0,
+    "CinqDernier": ["", "", "", "", ""]
+  },
+  {
+    "IdEquipe": 11,
+    "Nom": "TETE CRAMEE FC",
+    "Points": 0,
+    "Victoire": 0,
+    "Egalite": 0,
+    "Defaite": 0,
+    "Bp": 0,
+    "Bc": 0,
+    "CinqDernier": ["", "", "", "", ""]
+  },
+  {
+    "IdEquipe": 12,
+    "Nom": "BRIMBORION FC",
+    "Points": 0,
+    "Victoire": 0,
+    "Egalite": 0,
+    "Defaite": 0,
+    "Bp": 0,
+    "Bc": 0,
+    "CinqDernier": ["", "", "", "", ""]
+  },
+  {
+    "IdEquipe": 13,
+    "Nom": "CONTROLES DESORIENTES ASC",
+    "Points": 0,
+    "Victoire": 0,
+    "Egalite": 0,
+    "Defaite": 0,
+    "Bp": 0,
+    "Bc": 0,
+    "CinqDernier": ["", "", "", "", ""]
+  },
+  {
+    "IdEquipe": 14,
+    "Nom": "BLACK PANAMA FC",
+    "Points": 0,
+    "Victoire": 0,
+    "Egalite": 0,
+    "Defaite": 0,
+    "Bp": 0,
+    "Bc": 0,
+    "CinqDernier": ["", "", "", "", ""]
+  }
+]

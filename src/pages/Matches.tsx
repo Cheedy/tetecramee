@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Loader2 } from 'lucide-react'
+import { Loader2, ChevronDownIcon } from 'lucide-react'
 import { fetchMatches, getTeamLogo } from '../utils/api'
 
 interface MatchData {
@@ -19,8 +19,12 @@ const TEAM_ID = 5962
 
 const Matches: React.FC = () => {
   const [matches, setMatches] = useState<MatchData[]>([])
+  const [allMatches, setAllMatches] = useState<MatchData[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const [selectedTeam, setSelectedTeam] = useState<string>('TETE CRAMEE FC')
+  const [teams, setTeams] = useState<string[]>([])
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false)
 
   useEffect(() => {
     const loadMatches = async () => {
@@ -40,7 +44,17 @@ const Matches: React.FC = () => {
         });
         
         // Combiner : matchs triés + matchs sans dates à la fin
-        setMatches([...sortedMatchesWithDates, ...matchesWithoutDates]);
+        const sortedMatches = [...sortedMatchesWithDates, ...matchesWithoutDates];
+        setAllMatches(sortedMatches);
+        setMatches(sortedMatches);
+        
+        // Extraire toutes les équipes uniques
+        const allTeams = new Set<string>();
+        result.forEach(match => {
+          allTeams.add(match.Equipedom);
+          allTeams.add(match.Equipeext);
+        });
+        setTeams(['Toutes les équipes', ...Array.from(allTeams).sort()]);
       }
       setLoading(false);
     };
@@ -48,9 +62,26 @@ const Matches: React.FC = () => {
     loadMatches();
   }, [])
 
+  useEffect(() => {
+    if (selectedTeam === 'Toutes les équipes') {
+      setMatches(allMatches);
+    } else {
+      const filteredMatches = allMatches.filter(match => 
+        match.Equipedom === selectedTeam || match.Equipeext === selectedTeam
+      );
+      setMatches(filteredMatches);
+    }
+  }, [selectedTeam, allMatches])
+
 
   const getTeamNameClass = (teamName: string) => {
-    return teamName === TEAM_NAME ? 'text-orange-500 font-bold' : 'font-bold';
+    if (teamName === TEAM_NAME) {
+      return 'text-orange-500 font-bold';
+    } else if (teamName === selectedTeam && selectedTeam !== 'Toutes les équipes') {
+      return 'text-blue-400 font-bold';
+    } else {
+      return 'font-bold';
+    }
   }
 
   const getMatchResult = (match: MatchData) => {
@@ -87,7 +118,51 @@ const Matches: React.FC = () => {
 
   return (
     <div className="space-y-4">
-      <h1 className="text-2xl sm:text-3xl font-bold text-orange-500 mb-4">Tous les matchs</h1>
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <h1 className="text-2xl sm:text-3xl font-bold text-orange-500">Tous les matchs</h1>
+        
+        {/* Dropdown pour filtrer par équipe */}
+        <div className="relative">
+          <button
+            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+            className="bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded-lg flex items-center gap-2 min-w-[200px] justify-between transition-colors"
+          >
+            <span className="truncate">{selectedTeam}</span>
+            <ChevronDownIcon 
+              className={`transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`} 
+              size={20} 
+            />
+          </button>
+          
+          {isDropdownOpen && (
+            <div className="absolute top-full left-0 mt-1 w-full bg-gray-700 border border-gray-600 rounded-lg shadow-lg z-10 max-h-60 overflow-y-auto">
+              {teams.map((team) => (
+                <button
+                  key={team}
+                  onClick={() => {
+                    setSelectedTeam(team);
+                    setIsDropdownOpen(false);
+                  }}
+                  className={`w-full text-left px-4 py-2 hover:bg-gray-600 transition-colors ${
+                    selectedTeam === team ? 'bg-orange-600 text-white' : 'text-gray-200'
+                  }`}
+                >
+                  <div className="flex items-center gap-2">
+                    {team !== 'Toutes les équipes' && (
+                      <img 
+                        src={getTeamLogo(null, team)}
+                        alt={team} 
+                        className="w-5 h-5 object-cover rounded-full"
+                      />
+                    )}
+                    <span className="truncate">{team}</span>
+                  </div>
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
       {matches.map((match, index) => {
         // Gérer les dates nulles
         const getFormattedDate = () => {

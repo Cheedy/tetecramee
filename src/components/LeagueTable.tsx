@@ -89,13 +89,19 @@ const LeagueTable: React.FC = () => {
               <td className="py-2 px-4">{team.Bc}</td>
               <td className="py-2 px-4 font-bold">{team.Points}</td>
               <td className="py-2 px-4">
-                {team.CinqDernier.map((result, i) => (
-                  <span key={i} className={`inline-block w-3 h-3 rounded-full mr-1 ${
-                    result === 'won' ? 'bg-green-500' :
-                    result === 'draw' ? 'bg-yellow-500' :
-                    'bg-red-500'
-                  }`}></span>
-                ))}
+                {team.Victoire + team.Egalite + team.Defaite > 0 ? (
+                  team.CinqDernier.map((result, i) => (
+                    result ? (
+                      <span key={i} className={`inline-block w-3 h-3 rounded-full mr-1 ${
+                        result === 'won' ? 'bg-green-500' :
+                        result === 'draw' ? 'bg-yellow-500' :
+                        'bg-red-500'
+                      }`}></span>
+                    ) : null
+                  ))
+                ) : (
+                  <span className="text-gray-500 text-xs">-</span>
+                )}
               </td>
             </tr>
           ))}

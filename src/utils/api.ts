@@ -1,4 +1,6 @@
 import axios from 'axios';
+import leagueTableData from '../data/leagueTable.json';
+import leagueMatchesData from '../data/leagueMatches.json';
 
 interface MatchData {
   Equipedom: string;
@@ -26,8 +28,8 @@ interface TeamData {
 
 export const fetchMatches = async (): Promise<MatchData[] | { error: string }> => {
   try {
-    const response = await axios.get('https://getrencontres.chedy-eltabaa.workers.dev/');
-    return response.data;
+    // Utiliser les données statiques au lieu de l'API
+    return leagueMatchesData;
   } catch (error) {
     return { error: "Impossible de charger les matchs. Veuillez réessayer plus tard." };
   }
@@ -85,8 +87,8 @@ export const fetchNextMatch = async (): Promise<MatchData | { error: string }> =
 
 export const fetchLeagueTable = async (): Promise<TeamData[] | { error: string }> => {
   try {
-    const response = await axios.get('https://black-breeze-665a.chedy-eltabaa.workers.dev/');
-    return response.data;
+    // Utiliser les données statiques au lieu de l'API
+    return leagueTableData;
   } catch (error) {
     return { error: "Impossible de charger le classement. Veuillez réessayer plus tard." };
   }
