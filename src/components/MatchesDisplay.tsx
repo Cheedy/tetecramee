@@ -12,6 +12,7 @@ interface MatchData {
   Etat: boolean;
   Scoredom: number | null;
   Scoreext: number | null;
+  competition?: string;
 }
 
 const MatchesDisplay: React.FC = () => {
@@ -58,8 +59,10 @@ const MatchesDisplay: React.FC = () => {
       if (!match.Date || match.Date === null) {
         return "Date à déterminer";
       }
-      const matchDate = new Date(parseInt(match.Date.slice(6, -2)));
-      return matchDate.toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' });
+      // Date déjà en format dd/mm/yyyy
+      const [day, month] = match.Date.split('/');
+      const monthNames = ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Jun', 'Jul', 'Aoû', 'Sep', 'Oct', 'Nov', 'Déc'];
+      return `${day} ${monthNames[parseInt(month) - 1]}`;
     };
 
     return (
@@ -71,7 +74,12 @@ const MatchesDisplay: React.FC = () => {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent rounded-lg"></div>
         <div className="absolute inset-0 flex flex-col items-center justify-center text-white p-4">
-          <h2 className="text-2xl font-bold mb-2">{title}</h2>
+          <h2 className="text-2xl font-bold mb-1">{title}</h2>
+          {match.competition && (
+            <span className="text-sm bg-orange-600 px-2 py-1 rounded-full mb-2">
+              {match.competition}
+            </span>
+          )}
           <div className="flex items-center justify-center space-x-4 mb-2">
             <div className="flex flex-col items-center">
               <div className="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center text-black font-bold overflow-hidden">
