@@ -1,38 +1,16 @@
-[
-  {
-    "id": 1,
-    "joueur": "Ahmed",
-    "poste": "Attaque",
-    "buts": 3
-  },
-  {
-    "id": 2,
-    "joueur": "Elias",
-    "poste": "Millieu",
-    "buts": 2
-  },
-  {
-    "id": 3,
-    "joueur": "Abdel",
-    "poste": "Millieu",
-    "buts": 1
-  },
-  {
-    "id": 4,
-    "joueur": "Rayen",
-    "poste": "Millieu",
-    "buts": 1
-  },
-  {
-    "id": 5,
-    "joueur": "Bactiar",
-    "poste": "Attaque",
-    "buts": 1
-  },
-  {
-    "id": 6,
-    "joueur": "Zinedine",
-    "poste": "Millieu",
-    "buts": 1
-  }
-]
+{
+  "buteurs": [
+    { "id": 1, "joueur": "Ahmed", "poste": "Attaque", "buts": 3 },
+    { "id": 2, "joueur": "Elias", "poste": "Millieu", "buts": 2 },
+    { "id": 3, "joueur": "Abdel", "poste": "Millieu", "buts": 1 },
+    { "id": 4, "joueur": "Rayen", "poste": "Millieu", "buts": 1 },
+    { "id": 5, "joueur": "Bactiar", "poste": "Attaque", "buts": 1 },
+    { "id": 6, "joueur": "Zinedine", "poste": "Millieu", "buts": 1 }
+  ],
+  "passeurs": [
+    { "id": 1, "joueur": "Ahmed", "poste": "Attaque", "assists": 2 },
+    { "id": 2, "joueur": "Abdel", "poste": "Millieu", "assists": 1 },
+    { "id": 3, "joueur": "Elias", "poste": "Millieu", "assists": 1 },
+    { "id": 4, "joueur": "Zinedine", "poste": "Millieu", "assists": 1 }
+  ]
+}

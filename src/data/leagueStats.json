@@ -1,0 +1,30 @@
+{
+  "buteurs": [
+    { "id": 1, "joueur": "Chedy", "poste": "Défense", "buts": 0 },
+    { "id": 2, "joueur": "Achref", "poste": "Millieu", "buts": 0 },
+    { "id": 3, "joueur": "Abdel", "poste": "Millieu", "buts": 0 },
+    { "id": 4, "joueur": "Abdou", "poste": "Défense", "buts": 0 },
+    { "id": 5, "joueur": "Ahmed", "poste": "Attaque", "buts": 0 },
+    { "id": 6, "joueur": "Bactiar", "poste": "Attaque", "buts": 0 },
+    { "id": 7, "joueur": "Othmane", "poste": "Millieu", "buts": 0 },
+    { "id": 8, "joueur": "Raïd", "poste": "Défense", "buts": 0 },
+    { "id": 9, "joueur": "Zinedine", "poste": "Millieu", "buts": 0 },
+    { "id": 10, "joueur": "Camara", "poste": "Gardien", "buts": 0 },
+    { "id": 11, "joueur": "Elias", "poste": "Millieu", "buts": 0 },
+    { "id": 12, "joueur": "Rayen", "poste": "Millieu", "buts": 0 }
+  ],
+  "passeurs": [
+    { "id": 1, "joueur": "Chedy", "poste": "Défense", "assists": 0 },
+    { "id": 2, "joueur": "Achref", "poste": "Millieu", "assists": 0 },
+    { "id": 3, "joueur": "Abdel", "poste": "Millieu", "assists": 0 },
+    { "id": 4, "joueur": "Abdou", "poste": "Défense", "assists": 0 },
+    { "id": 5, "joueur": "Ahmed", "poste": "Attaque", "assists": 0 },
+    { "id": 6, "joueur": "Bactiar", "poste": "Attaque", "assists": 0 },
+    { "id": 7, "joueur": "Othmane", "poste": "Millieu", "assists": 0 },
+    { "id": 8, "joueur": "Raïd", "poste": "Défense", "assists": 0 },
+    { "id": 9, "joueur": "Zinedine", "poste": "Millieu", "assists": 0 },
+    { "id": 10, "joueur": "Camara", "poste": "Gardien", "assists": 0 },
+    { "id": 11, "joueur": "Elias", "poste": "Millieu", "assists": 0 },
+    { "id": 12, "joueur": "Rayen", "poste": "Millieu", "assists": 0 }
+  ]
+}

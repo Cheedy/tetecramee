@@ -5,6 +5,7 @@ import Home from './pages/Home'
 import Matches from './pages/Matches'
 import LeagueTablePage from './pages/LeagueTablePage'
 import Statistics from './pages/Statistics'
+import Coupe from './pages/Coupe'
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/matches" element={<Matches />} />
             <Route path="/classement" element={<LeagueTablePage />} />
+            <Route path="/coupe" element={<Coupe />} />
             <Route path="/statistiques" element={<Statistics />} />
           </Routes>
         </main>
