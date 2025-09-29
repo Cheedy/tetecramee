@@ -8,7 +8,7 @@ interface MatchData {
   Logodom: string | null;
   Logoext: string | null;
   Terrain: string;
-  Date: string;
+  Date: string | null;
   Etat: boolean;
   Scoredom: number | null;
   Scoreext: number | null;

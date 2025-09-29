@@ -1,4 +1,3 @@
-import axios from 'axios';
 import leagueTableData from '../data/leagueTable.json';
 import leagueMatchesData from '../data/leagueMatches.json';
 import allMatchesData from '../data/allMatches.json';
@@ -9,7 +8,7 @@ interface MatchData {
   Logodom: string | null;
   Logoext: string | null;
   Terrain: string;
-  Date: string;
+  Date: string | null;
   Etat: boolean;
   Scoredom: number | null;
   Scoreext: number | null;
@@ -40,8 +39,8 @@ export const fetchMatches = async (): Promise<MatchData[] | { error: string }> =
 export const fetchNextAndLastMatch = async (): Promise<{ nextMatch: MatchData | null, lastMatch: MatchData | null } | { error: string }> => {
   try {
     // Récupérer tous les matchs de TETE CRAMEE FC (Ligue + Coupe)
-    const coupeMatches = allMatchesData.coupe.map(match => ({ ...match, competition: 'Coupe' }));
-    const ligueMatches = allMatchesData.ligue.map(match => ({ ...match, competition: 'Ligue' }));
+    const coupeMatches = (allMatchesData.coupe || []).map(match => ({ ...match, competition: 'Coupe' }));
+    const ligueMatches = (allMatchesData.ligue || []).map(match => ({ ...match, competition: 'Ligue' }));
     const allMatches = [...coupeMatches, ...ligueMatches];
 
     // Filtrer uniquement les matchs de TETE CRAMEE FC
@@ -52,14 +51,14 @@ export const fetchNextAndLastMatch = async (): Promise<{ nextMatch: MatchData | 
     const now = new Date();
     
     // Fonction pour convertir dd/mm/yyyy en Date
-    const parseDate = (dateStr: string): Date => {
+    const parseDate = (dateStr: string | null): Date => {
+      if (!dateStr) return new Date(0); // Date très ancienne pour les dates nulles
       const [day, month, year] = dateStr.split('/');
       return new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
     };
 
     // Séparer les matchs avec et sans dates
     const matchesWithDates = teteCrameeMatches.filter(match => match.Date && match.Date !== null);
-    const matchesWithoutDates = teteCrameeMatches.filter(match => !match.Date || match.Date === null);
     
     // Trier les matchs avec dates
     const sortedMatches = matchesWithDates.sort((a, b) => {

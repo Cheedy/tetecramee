@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { ChevronDownIcon, ChevronUpIcon } from 'lucide-react';
+import cupMatches from '../data/cupMatches.json';
+import cupStats from '../data/cupStats.json';
 
 const Coupe: React.FC = () => {
   const [expandedJournee, setExpandedJournee] = useState<number | null>(null);
@@ -12,6 +14,25 @@ const Coupe: React.FC = () => {
   const togglePhases = () => {
     setExpandedPhases(!expandedPhases);
   };
+
+  // Fonction pour récupérer les matchs par journée
+  const getMatchesByJournee = (journee: string) => {
+    return cupMatches.filter(match => match.JourneeName === journee);
+  };
+
+  // Fonction pour formater le score
+  const formatScore = (scoredom: number | null, scoreext: number | null, forfait: string | null) => {
+    if (forfait) {
+      return '3-0F';
+    }
+    if (scoredom !== null && scoreext !== null) {
+      return `${scoredom} - ${scoreext}`;
+    }
+    return 'vs';
+  };
+
+  // Fonction pour vérifier si c'est TETE CRAMEE FC
+  const isTeteCramee = (equipe: string) => equipe === 'TETE CRAMEE FC';
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -223,7 +244,7 @@ const Coupe: React.FC = () => {
                 className="w-full p-4 flex justify-between items-center hover:bg-gray-600 transition-colors"
               >
                 <div className="flex items-center space-x-3">
-                  <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                  <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                   <h3 className="text-xl font-bold text-white">2ème journée</h3>
                   <span className="text-orange-400 font-medium">Samedi 27 septembre</span>
                 </div>
@@ -237,104 +258,49 @@ const Coupe: React.FC = () => {
               {expandedJournee === 2 && (
                 <div className="p-4 bg-gray-600">
                   <div className="space-y-2">
-                    <div className="bg-gray-800 p-3 rounded-lg">
-                      <div className="flex justify-between items-center">
-                        <span className="text-white font-medium text-sm">FC FOUKY</span>
-                        <span className="text-gray-400 font-bold">vs</span>
-                        <span className="text-white font-medium text-sm">FC FIVE</span>
+                    {getMatchesByJournee('2ème journée').map((match, index) => (
+                      <div 
+                        key={index}
+                        className={`p-3 rounded-lg max-w-md mx-auto ${
+                          isTeteCramee(match.Equipedom) || isTeteCramee(match.Equipeext)
+                            ? 'bg-gradient-to-r from-orange-800 to-orange-600 border-2 border-orange-400'
+                            : 'bg-gray-800'
+                        }`}
+                      >
+                        <div className="flex items-center">
+                          <div className="w-24 text-left">
+                            <span className={`font-medium text-xs ${
+                              isTeteCramee(match.Equipedom) ? 'text-white font-bold' : 'text-white'
+                            }`}>
+                              {match.Equipedom}
+                            </span>
+                          </div>
+                          <div className="flex-1 text-center">
+                            <span className={`font-bold text-sm ${
+                              isTeteCramee(match.Equipedom) || isTeteCramee(match.Equipeext)
+                                ? 'text-green-300'
+                                : 'text-orange-400'
+                            }`}>
+                              {formatScore(match.Scoredom, match.Scoreext, match.Forfait)}
+                            </span>
+                            <p className={`text-xs mt-1 ${
+                              isTeteCramee(match.Equipedom) || isTeteCramee(match.Equipeext)
+                                ? 'text-orange-100'
+                                : 'text-gray-400'
+                            }`}>
+                              {match.Terrain} - 19h
+                            </p>
+                          </div>
+                          <div className="w-24 text-right">
+                            <span className={`font-medium text-xs ${
+                              isTeteCramee(match.Equipeext) ? 'text-white font-bold' : 'text-white'
+                            }`}>
+                              {match.Equipeext}
+                            </span>
+                          </div>
+                        </div>
                       </div>
-                      <p className="text-gray-400 text-xs mt-1">Stade à définir - 19h</p>
-                    </div>
-                    
-                    <div className="bg-gray-800 p-3 rounded-lg">
-                      <div className="flex justify-between items-center">
-                        <span className="text-white font-medium text-sm">FC HAB</span>
-                        <span className="text-gray-400 font-bold">vs</span>
-                        <span className="text-white font-medium text-sm">FC PARIS CLICHY C</span>
-                      </div>
-                      <p className="text-gray-400 text-xs mt-1">Stade à définir - 19h</p>
-                    </div>
-                    
-                    <div className="bg-gray-800 p-3 rounded-lg">
-                      <div className="flex justify-between items-center">
-                        <span className="text-white font-medium text-sm">UFC PARIS 17</span>
-                        <span className="text-gray-400 font-bold">vs</span>
-                        <span className="text-white font-medium text-sm">BRIMBORION</span>
-                      </div>
-                      <p className="text-gray-400 text-xs mt-1">Stade à définir - 20h</p>
-                    </div>
-                    
-                    <div className="bg-gray-800 p-3 rounded-lg">
-                      <div className="flex justify-between items-center">
-                        <span className="text-white font-medium text-sm">PASTA FC</span>
-                        <span className="text-gray-400 font-bold">vs</span>
-                        <span className="text-white font-medium text-sm">DEMOS FC</span>
-                      </div>
-                      <p className="text-gray-400 text-xs mt-1">Stade à définir - 20h</p>
-                    </div>
-                    
-                    <div className="bg-gray-800 p-3 rounded-lg">
-                      <div className="flex justify-between items-center">
-                        <span className="text-white font-medium text-sm">TOUT PUISSANT TOLOSA</span>
-                        <span className="text-gray-400 font-bold">vs</span>
-                        <span className="text-white font-medium text-sm">BLACK PANAMA FC</span>
-                      </div>
-                      <p className="text-gray-400 text-xs mt-1">Suzanne Lenglen (Terrain n°1) - 19h</p>
-                    </div>
-                    
-                    <div className="bg-gray-800 p-3 rounded-lg">
-                      <div className="flex justify-between items-center">
-                        <span className="text-white font-medium text-sm">OCCITAN FC B</span>
-                        <span className="text-gray-400 font-bold">vs</span>
-                        <span className="text-white font-medium text-sm">MDJ FC</span>
-                      </div>
-                      <p className="text-gray-400 text-xs mt-1">Suzanne Lenglen (Terrain n°3) - 19h</p>
-                    </div>
-                    
-                    <div className="bg-gray-800 p-3 rounded-lg">
-                      <div className="flex justify-between items-center">
-                        <span className="text-white font-medium text-sm">PANATRECE</span>
-                        <span className="text-gray-400 font-bold">vs</span>
-                        <span className="text-white font-medium text-sm">WOLF FC</span>
-                      </div>
-                      <p className="text-gray-400 text-xs mt-1">Suzanne Lenglen (Terrain n°3) - 19h</p>
-                    </div>
-                    
-                    <div className="bg-gray-800 p-3 rounded-lg">
-                      <div className="flex justify-between items-center">
-                        <span className="text-white font-medium text-sm">FC VELPEAU</span>
-                        <span className="text-gray-400 font-bold">vs</span>
-                        <span className="text-white font-medium text-sm">FCPS</span>
-                      </div>
-                      <p className="text-gray-400 text-xs mt-1">Suzanne Lenglen (Terrain n°1) - 19h</p>
-                    </div>
-                    
-                    <div className="bg-gradient-to-r from-orange-800 to-orange-600 p-3 rounded-lg border-2 border-orange-400">
-                      <div className="flex justify-between items-center">
-                        <span className="text-white font-bold text-sm">INTERNATIONALE PARIS IV</span>
-                        <span className="text-yellow-300 font-bold text-lg">vs</span>
-                        <span className="text-white font-bold text-sm">TETE CRAMEE FC</span>
-                      </div>
-                      <p className="text-orange-100 text-xs mt-1">Suzanne Lenglen (Terrain n°1) - 20h</p>
-                    </div>
-                    
-                    <div className="bg-gray-800 p-3 rounded-lg">
-                      <div className="flex justify-between items-center">
-                        <span className="text-white font-medium text-sm">ATLAS LION FC</span>
-                        <span className="text-gray-400 font-bold">vs</span>
-                        <span className="text-white font-medium text-sm">LAS ALPACAS</span>
-                      </div>
-                      <p className="text-gray-400 text-xs mt-1">Suzanne Lenglen (Terrain n°3) - 20h</p>
-                    </div>
-                    
-                    <div className="bg-gray-800 p-3 rounded-lg">
-                      <div className="flex justify-between items-center">
-                        <span className="text-white font-medium text-sm">ARZ FC</span>
-                        <span className="text-gray-400 font-bold">vs</span>
-                        <span className="text-white font-medium text-sm">TS FC</span>
-                      </div>
-                      <p className="text-gray-400 text-xs mt-1">Suzanne Lenglen (Terrain n°1) - 20h</p>
-                    </div>
+                    ))}
                   </div>
                 </div>
               )}
@@ -361,104 +327,49 @@ const Coupe: React.FC = () => {
               {expandedJournee === 3 && (
                 <div className="p-4 bg-gray-600">
                   <div className="space-y-2">
-                    <div className="bg-gray-800 p-3 rounded-lg">
-                      <div className="flex justify-between items-center">
-                        <span className="text-white font-medium text-sm">MDJ FC</span>
-                        <span className="text-gray-400 font-bold">vs</span>
-                        <span className="text-white font-medium text-sm">BLACK PANAMA FC</span>
+                    {getMatchesByJournee('3ème journée').map((match, index) => (
+                      <div 
+                        key={index}
+                        className={`p-3 rounded-lg max-w-md mx-auto ${
+                          isTeteCramee(match.Equipedom) || isTeteCramee(match.Equipeext)
+                            ? 'bg-gradient-to-r from-orange-800 to-orange-600 border-2 border-orange-400'
+                            : 'bg-gray-800'
+                        }`}
+                      >
+                        <div className="flex items-center">
+                          <div className="w-24 text-left">
+                            <span className={`font-medium text-xs ${
+                              isTeteCramee(match.Equipedom) ? 'text-white font-bold' : 'text-white'
+                            }`}>
+                              {match.Equipedom}
+                            </span>
+                          </div>
+                          <div className="flex-1 text-center">
+                            <span className={`font-bold text-sm ${
+                              isTeteCramee(match.Equipedom) || isTeteCramee(match.Equipeext)
+                                ? 'text-yellow-300'
+                                : 'text-gray-400'
+                            }`}>
+                              {formatScore(match.Scoredom, match.Scoreext, match.Forfait)}
+                            </span>
+                            <p className={`text-xs mt-1 ${
+                              isTeteCramee(match.Equipedom) || isTeteCramee(match.Equipeext)
+                                ? 'text-orange-100'
+                                : 'text-gray-400'
+                            }`}>
+                              {match.Terrain} - 20h
+                            </p>
+                          </div>
+                          <div className="w-24 text-right">
+                            <span className={`font-medium text-xs ${
+                              isTeteCramee(match.Equipeext) ? 'text-white font-bold' : 'text-white'
+                            }`}>
+                              {match.Equipeext}
+                            </span>
+                          </div>
+                        </div>
                       </div>
-                      <p className="text-gray-400 text-xs mt-1">Stade à définir - 19h</p>
-                    </div>
-                    
-                    <div className="bg-gray-800 p-3 rounded-lg">
-                      <div className="flex justify-between items-center">
-                        <span className="text-white font-medium text-sm">DEMOS FC</span>
-                        <span className="text-gray-400 font-bold">vs</span>
-                        <span className="text-white font-medium text-sm">BRIMBORION</span>
-                      </div>
-                      <p className="text-gray-400 text-xs mt-1">Stade à définir - 19h</p>
-                    </div>
-                    
-                    <div className="bg-gray-800 p-3 rounded-lg">
-                      <div className="flex justify-between items-center">
-                        <span className="text-white font-medium text-sm">ATLAS LION FC</span>
-                        <span className="text-gray-400 font-bold">vs</span>
-                        <span className="text-white font-medium text-sm">FC FOUKY</span>
-                      </div>
-                      <p className="text-gray-400 text-xs mt-1">Stade à définir - 20h</p>
-                    </div>
-                    
-                    <div className="bg-gray-800 p-3 rounded-lg">
-                      <div className="flex justify-between items-center">
-                        <span className="text-white font-medium text-sm">UFC PARIS 17</span>
-                        <span className="text-gray-400 font-bold">vs</span>
-                        <span className="text-white font-medium text-sm">PASTA FC</span>
-                      </div>
-                      <p className="text-gray-400 text-xs mt-1">Stade à définir - 20h</p>
-                    </div>
-                    
-                    <div className="bg-gray-800 p-3 rounded-lg">
-                      <div className="flex justify-between items-center">
-                        <span className="text-white font-medium text-sm">FC FIVE</span>
-                        <span className="text-gray-400 font-bold">vs</span>
-                        <span className="text-white font-medium text-sm">WOLF FC</span>
-                      </div>
-                      <p className="text-gray-400 text-xs mt-1">Suzanne Lenglen (Terrain n°3) - 19h</p>
-                    </div>
-                    
-                    <div className="bg-gray-800 p-3 rounded-lg">
-                      <div className="flex justify-between items-center">
-                        <span className="text-white font-medium text-sm">TOUT PUISSANT TOLOSA</span>
-                        <span className="text-gray-400 font-bold">vs</span>
-                        <span className="text-white font-medium text-sm">OCCITAN FC B</span>
-                      </div>
-                      <p className="text-gray-400 text-xs mt-1">Suzanne Lenglen (Terrain n°1) - 19h</p>
-                    </div>
-                    
-                    <div className="bg-gray-800 p-3 rounded-lg">
-                      <div className="flex justify-between items-center">
-                        <span className="text-white font-medium text-sm">PANATRECE</span>
-                        <span className="text-gray-400 font-bold">vs</span>
-                        <span className="text-white font-medium text-sm">LAS ALPACAS</span>
-                      </div>
-                      <p className="text-gray-400 text-xs mt-1">Suzanne Lenglen (Terrain n°1) - 19h</p>
-                    </div>
-                    
-                    <div className="bg-gray-800 p-3 rounded-lg">
-                      <div className="flex justify-between items-center">
-                        <span className="text-white font-medium text-sm">ARZ FC</span>
-                        <span className="text-gray-400 font-bold">vs</span>
-                        <span className="text-white font-medium text-sm">FC VELPEAU</span>
-                      </div>
-                      <p className="text-gray-400 text-xs mt-1">Suzanne Lenglen (Terrain n°3) - 19h</p>
-                    </div>
-                    
-                    <div className="bg-gradient-to-r from-orange-800 to-orange-600 p-3 rounded-lg border-2 border-orange-400">
-                      <div className="flex justify-between items-center">
-                        <span className="text-white font-bold text-sm">TETE CRAMEE FC</span>
-                        <span className="text-yellow-300 font-bold text-lg">vs</span>
-                        <span className="text-white font-bold text-sm">FC PARIS CLICHY C</span>
-                      </div>
-                      <p className="text-orange-100 text-xs mt-1">Suzanne Lenglen (Terrain n°1) - 20h</p>
-                    </div>
-                    
-                    <div className="bg-gray-800 p-3 rounded-lg">
-                      <div className="flex justify-between items-center">
-                        <span className="text-white font-medium text-sm">FC HAB</span>
-                        <span className="text-gray-400 font-bold">vs</span>
-                        <span className="text-white font-medium text-sm">INTERNATIONALE PARIS IV</span>
-                      </div>
-                      <p className="text-gray-400 text-xs mt-1">Suzanne Lenglen (Terrain n°1) - 20h</p>
-                    </div>
-                    
-                    <div className="bg-gray-800 p-3 rounded-lg">
-                      <div className="flex justify-between items-center">
-                        <span className="text-white font-medium text-sm">FCPS</span>
-                        <span className="text-gray-400 font-bold">vs</span>
-                        <span className="text-white font-medium text-sm">TS FC</span>
-                      </div>
-                      <p className="text-gray-400 text-xs mt-1">Suzanne Lenglen (Terrain n°3) - 20h</p>
-                    </div>
+                    ))}
                   </div>
                 </div>
               )}
@@ -559,30 +470,16 @@ const Coupe: React.FC = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr className="border-b border-gray-600">
-                      <td className="px-3 py-2 text-white font-medium text-sm">OCCITAN FC B</td>
-                      <td className="px-2 py-2 text-center text-green-400 font-bold">4</td>
-                      <td className="px-2 py-2 text-center text-gray-300">1</td>
-                      <td className="px-2 py-2 text-center text-green-400">+2</td>
-                    </tr>
-                    <tr className="border-b border-gray-600">
-                      <td className="px-3 py-2 text-white font-medium text-sm">MDJ FC</td>
-                      <td className="px-2 py-2 text-center text-green-400 font-bold">4</td>
-                      <td className="px-2 py-2 text-center text-gray-300">1</td>
-                      <td className="px-2 py-2 text-center text-green-400">+2</td>
-                    </tr>
-                    <tr className="border-b border-gray-600">
-                      <td className="px-3 py-2 text-white font-medium text-sm">BLACK PANAMA FC</td>
-                      <td className="px-2 py-2 text-center text-gray-300">1</td>
-                      <td className="px-2 py-2 text-center text-gray-300">1</td>
-                      <td className="px-2 py-2 text-center text-red-400">-2</td>
-                    </tr>
-                    <tr>
-                      <td className="px-3 py-2 text-white font-medium text-sm">TOUT PUISSANT TOLOSA</td>
-                      <td className="px-2 py-2 text-center text-gray-300">1</td>
-                      <td className="px-2 py-2 text-center text-gray-300">1</td>
-                      <td className="px-2 py-2 text-center text-red-400">-2</td>
-                    </tr>
+                    {cupStats.classements.groupeA.map((team, index) => (
+                      <tr key={index} className={index < cupStats.classements.groupeA.length - 1 ? "border-b border-gray-600" : ""}>
+                        <td className="px-3 py-2 text-white font-medium text-sm">{team.team}</td>
+                        <td className="px-2 py-2 text-center text-green-400 font-bold">{team.points}</td>
+                        <td className="px-2 py-2 text-center text-gray-300">{team.j}</td>
+                        <td className={`px-2 py-2 text-center ${team.diff >= 0 ? 'text-green-400' : 'text-red-400'}`}>
+                          {team.diff >= 0 ? '+' : ''}{team.diff}
+                        </td>
+                      </tr>
+                    ))}
                   </tbody>
                 </table>
               </div>
@@ -604,30 +501,16 @@ const Coupe: React.FC = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr className="border-b border-gray-600">
-                      <td className="px-3 py-2 text-white font-medium text-sm">FC VELPEAU</td>
-                      <td className="px-2 py-2 text-center text-green-400 font-bold">4</td>
-                      <td className="px-2 py-2 text-center text-gray-300">1</td>
-                      <td className="px-2 py-2 text-center text-green-400">+6</td>
-                    </tr>
-                    <tr className="border-b border-gray-600">
-                      <td className="px-3 py-2 text-white font-medium text-sm">FCPS</td>
-                      <td className="px-2 py-2 text-center text-green-400 font-bold">4</td>
-                      <td className="px-2 py-2 text-center text-gray-300">1</td>
-                      <td className="px-2 py-2 text-center text-green-400">+2</td>
-                    </tr>
-                    <tr className="border-b border-gray-600">
-                      <td className="px-3 py-2 text-white font-medium text-sm">ARZ FC</td>
-                      <td className="px-2 py-2 text-center text-gray-300">1</td>
-                      <td className="px-2 py-2 text-center text-gray-300">1</td>
-                      <td className="px-2 py-2 text-center text-red-400">-2</td>
-                    </tr>
-                    <tr>
-                      <td className="px-3 py-2 text-white font-medium text-sm">TS FC</td>
-                      <td className="px-2 py-2 text-center text-gray-300">1</td>
-                      <td className="px-2 py-2 text-center text-gray-300">1</td>
-                      <td className="px-2 py-2 text-center text-red-400">-6</td>
-                    </tr>
+                    {cupStats.classements.groupeB.map((team, index) => (
+                      <tr key={index} className={index < cupStats.classements.groupeB.length - 1 ? "border-b border-gray-600" : ""}>
+                        <td className="px-3 py-2 text-white font-medium text-sm">{team.team}</td>
+                        <td className="px-2 py-2 text-center text-green-400 font-bold">{team.points}</td>
+                        <td className="px-2 py-2 text-center text-gray-300">{team.j}</td>
+                        <td className={`px-2 py-2 text-center ${team.diff >= 0 ? 'text-green-400' : 'text-red-400'}`}>
+                          {team.diff >= 0 ? '+' : ''}{team.diff}
+                        </td>
+                      </tr>
+                    ))}
                   </tbody>
                 </table>
               </div>
@@ -649,30 +532,24 @@ const Coupe: React.FC = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr className="border-b border-gray-600 bg-gradient-to-r from-orange-900 to-orange-800">
-                      <td className="px-3 py-2 text-orange-300 font-bold text-sm">🏆 TETE CRAMEE FC</td>
-                      <td className="px-2 py-2 text-center text-green-400 font-bold">4</td>
-                      <td className="px-2 py-2 text-center text-orange-300">1</td>
-                      <td className="px-2 py-2 text-center text-green-400">+5</td>
-                    </tr>
-                    <tr className="border-b border-gray-600">
-                      <td className="px-3 py-2 text-white font-medium text-sm">FC PARIS CLICHY C</td>
-                      <td className="px-2 py-2 text-center text-green-400 font-bold">4</td>
-                      <td className="px-2 py-2 text-center text-gray-300">1</td>
-                      <td className="px-2 py-2 text-center text-green-400">+4</td>
-                    </tr>
-                    <tr className="border-b border-gray-600">
-                      <td className="px-3 py-2 text-white font-medium text-sm">INTERNATIONALE PARIS IV</td>
-                      <td className="px-2 py-2 text-center text-gray-300">1</td>
-                      <td className="px-2 py-2 text-center text-gray-300">1</td>
-                      <td className="px-2 py-2 text-center text-red-400">-4</td>
-                    </tr>
-                    <tr>
-                      <td className="px-3 py-2 text-white font-medium text-sm">FC HAB</td>
-                      <td className="px-2 py-2 text-center text-gray-300">1</td>
-                      <td className="px-2 py-2 text-center text-gray-300">1</td>
-                      <td className="px-2 py-2 text-center text-red-400">-5</td>
-                    </tr>
+                    {cupStats.classements.groupeC.map((team, index) => (
+                      <tr key={index} className={`${index < cupStats.classements.groupeC.length - 1 ? "border-b border-gray-600" : ""} ${
+                        team.team === 'TETE CRAMEE FC' ? 'bg-gradient-to-r from-orange-900 to-orange-800' : ''
+                      }`}>
+                        <td className={`px-3 py-2 font-medium text-sm ${
+                          team.team === 'TETE CRAMEE FC' ? 'text-orange-300 font-bold' : 'text-white'
+                        }`}>
+                          {team.team === 'TETE CRAMEE FC' ? '🏆 TETE CRAMEE FC' : team.team}
+                        </td>
+                        <td className="px-2 py-2 text-center text-green-400 font-bold">{team.points}</td>
+                        <td className={`px-2 py-2 text-center ${
+                          team.team === 'TETE CRAMEE FC' ? 'text-orange-300' : 'text-gray-300'
+                        }`}>{team.j}</td>
+                        <td className={`px-2 py-2 text-center ${team.diff >= 0 ? 'text-green-400' : 'text-red-400'}`}>
+                          {team.diff >= 0 ? '+' : ''}{team.diff}
+                        </td>
+                      </tr>
+                    ))}
                   </tbody>
                 </table>
               </div>
@@ -694,42 +571,16 @@ const Coupe: React.FC = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr className="border-b border-gray-600">
-                      <td className="px-3 py-2 text-white font-medium text-sm">PANATRECE</td>
-                      <td className="px-2 py-2 text-center text-green-400 font-bold">4</td>
-                      <td className="px-2 py-2 text-center text-gray-300">1</td>
-                      <td className="px-2 py-2 text-center text-green-400">+5</td>
-                    </tr>
-                    <tr className="border-b border-gray-600">
-                      <td className="px-3 py-2 text-white font-medium text-sm">ATLAS LION FC</td>
-                      <td className="px-2 py-2 text-center text-green-400 font-bold">4</td>
-                      <td className="px-2 py-2 text-center text-gray-300">1</td>
-                      <td className="px-2 py-2 text-center text-green-400">+4</td>
-                    </tr>
-                    <tr className="border-b border-gray-600">
-                      <td className="px-3 py-2 text-white font-medium text-sm">FC FOUKY</td>
-                      <td className="px-2 py-2 text-center text-green-400 font-bold">4</td>
-                      <td className="px-2 py-2 text-center text-gray-300">1</td>
-                      <td className="px-2 py-2 text-center text-green-400">+1</td>
-                    </tr>
-                    <tr className="border-b border-gray-600">
-                      <td className="px-3 py-2 text-white font-medium text-sm">LAS ALPACAS</td>
-                      <td className="px-2 py-2 text-center text-gray-300">1</td>
-                      <td className="px-2 py-2 text-center text-gray-300">1</td>
-                      <td className="px-2 py-2 text-center text-red-400">-1</td>
-                    </tr>
-                    <tr className="border-b border-gray-600">
-                      <td className="px-3 py-2 text-white font-medium text-sm">WOLF FC</td>
-                      <td className="px-2 py-2 text-center text-gray-300">1</td>
-                      <td className="px-2 py-2 text-center text-gray-300">1</td>
-                      <td className="px-2 py-2 text-center text-red-400">-4</td>
-                    </tr>
-                    <tr>
-                      <td className="px-3 py-2 text-white font-medium text-sm">FC FIVE</td>
-                      <td className="px-2 py-2 text-center text-gray-300">1</td>
-                      <td className="px-2 py-2 text-center text-gray-300">1</td>
-                      <td className="px-2 py-2 text-center text-red-400">-5</td>
-                    </tr>
+                    {cupStats.classements.groupeD.map((team, index) => (
+                      <tr key={index} className={index < cupStats.classements.groupeD.length - 1 ? "border-b border-gray-600" : ""}>
+                        <td className="px-3 py-2 text-white font-medium text-sm">{team.team}</td>
+                        <td className="px-2 py-2 text-center text-green-400 font-bold">{team.points}</td>
+                        <td className="px-2 py-2 text-center text-gray-300">{team.j}</td>
+                        <td className={`px-2 py-2 text-center ${team.diff >= 0 ? 'text-green-400' : 'text-red-400'}`}>
+                          {team.diff >= 0 ? '+' : ''}{team.diff}
+                        </td>
+                      </tr>
+                    ))}
                   </tbody>
                 </table>
               </div>
@@ -751,30 +602,16 @@ const Coupe: React.FC = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr className="border-b border-gray-600">
-                      <td className="px-3 py-2 text-white font-medium text-sm">PASTA FC</td>
-                      <td className="px-2 py-2 text-center text-green-400 font-bold">4</td>
-                      <td className="px-2 py-2 text-center text-gray-300">1</td>
-                      <td className="px-2 py-2 text-center text-green-400">+11</td>
-                    </tr>
-                    <tr className="border-b border-gray-600">
-                      <td className="px-3 py-2 text-white font-medium text-sm">DEMOS FC</td>
-                      <td className="px-2 py-2 text-center text-green-400 font-bold">4</td>
-                      <td className="px-2 py-2 text-center text-gray-300">1</td>
-                      <td className="px-2 py-2 text-center text-green-400">+1</td>
-                    </tr>
-                    <tr className="border-b border-gray-600">
-                      <td className="px-3 py-2 text-white font-medium text-sm">UFC PARIS 17</td>
-                      <td className="px-2 py-2 text-center text-gray-300">1</td>
-                      <td className="px-2 py-2 text-center text-gray-300">1</td>
-                      <td className="px-2 py-2 text-center text-red-400">-1</td>
-                    </tr>
-                    <tr>
-                      <td className="px-3 py-2 text-white font-medium text-sm">BRIMBORION</td>
-                      <td className="px-2 py-2 text-center text-gray-300">1</td>
-                      <td className="px-2 py-2 text-center text-gray-300">1</td>
-                      <td className="px-2 py-2 text-center text-red-400">-11</td>
-                    </tr>
+                    {cupStats.classements.groupeE.map((team, index) => (
+                      <tr key={index} className={index < cupStats.classements.groupeE.length - 1 ? "border-b border-gray-600" : ""}>
+                        <td className="px-3 py-2 text-white font-medium text-sm">{team.team}</td>
+                        <td className="px-2 py-2 text-center text-green-400 font-bold">{team.points}</td>
+                        <td className="px-2 py-2 text-center text-gray-300">{team.j}</td>
+                        <td className={`px-2 py-2 text-center ${team.diff >= 0 ? 'text-green-400' : 'text-red-400'}`}>
+                          {team.diff >= 0 ? '+' : ''}{team.diff}
+                        </td>
+                      </tr>
+                    ))}
                   </tbody>
                 </table>
               </div>
