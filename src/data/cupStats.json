@@ -1,51 +1,51 @@
 {
   "buteurs": [
-    { "id": 1, "joueur": "Ahmed", "poste": "Attaque", "buts": 5 },
-    { "id": 2, "joueur": "Elias", "poste": "Millieu", "buts": 2 },
-    { "id": 3, "joueur": "Zinedine", "poste": "Millieu", "buts": 2 },
-    { "id": 4, "joueur": "Abdel", "poste": "Millieu", "buts": 2 },
-    { "id": 5, "joueur": "Rayen", "poste": "Millieu", "buts": 2 },
+    { "id": 1, "joueur": "Ahmed", "poste": "Attaque", "buts": 7 },
+    { "id": 2, "joueur": "Zinedine", "poste": "Millieu", "buts": 3 },
+    { "id": 3, "joueur": "Elias", "poste": "Millieu", "buts": 2 },
+    { "id": 4, "joueur": "Abdel", "poste": "Millieu", "buts": 3 },
+    { "id": 5, "joueur": "Rayen", "poste": "Millieu", "buts": 3 },
     { "id": 6, "joueur": "Bactiar", "poste": "Attaque", "buts": 1 }
   ],
   "passeurs": [
-    { "id": 1, "joueur": "Ahmed", "poste": "Attaque", "assists": 3 },
-    { "id": 2, "joueur": "Abdel", "poste": "Millieu", "assists": 2 },
-    { "id": 3, "joueur": "Elias", "poste": "Millieu", "assists": 2 },
+    { "id": 1, "joueur": "Ahmed", "poste": "Attaque", "assists": 4 },
+    { "id": 2, "joueur": "Abdel", "poste": "Millieu", "assists": 3 },
+    { "id": 3, "joueur": "Elias", "poste": "Millieu", "assists": 3 },
     { "id": 4, "joueur": "Zinedine", "poste": "Millieu", "assists": 1 },
-    { "id": 5, "joueur": "Raid", "poste": "Millieu", "assists": 1 }
+    { "id": 5, "joueur": "Raid", "poste": "Millieu", "assists": 2 }
   ],
   "classements": {
     "groupeA": [
-      { "position": 1, "team": "OCCITAN FC B", "points": 8, "j": 2, "g": 2, "n": 0, "p": 0, "bp": 13, "bc": 8, "diff": 5, "forfait": 0 },
-      { "position": 2, "team": "MDJ FC", "points": 5, "j": 2, "g": 1, "n": 0, "p": 1, "bp": 12, "bc": 7, "diff": 5, "forfait": 0 },
-      { "position": 3, "team": "BLACK PANAMA FC", "points": 3, "j": 2, "g": 0, "n": 1, "p": 1, "bp": 6, "bc": 8, "diff": -2, "forfait": 0 },
-      { "position": 4, "team": "TOUT PUISSANT TOLOSA", "points": 3, "j": 2, "g": 0, "n": 1, "p": 1, "bp": 5, "bc": 7, "diff": -2, "forfait": 0 }
+      { "position": 1, "team": "OCCITAN FC B", "points": 12, "j": 3, "g": 3, "n": 0, "p": 0, "bp": 22, "bc": 9, "diff": 13, "forfait": 0 },
+      { "position": 2, "team": "MDJ FC", "points": 9, "j": 3, "g": 2, "n": 0, "p": 1, "bp": 17, "bc": 13, "diff": 4, "forfait": 0 },
+      { "position": 3, "team": "BLACK PANAMA FC", "points": 4, "j": 3, "g": 0, "n": 1, "p": 2, "bp": 9, "bc": 13, "diff": -4, "forfait": 0 },
+      { "position": 4, "team": "TOUT PUISSANT TOLOSA", "points": 4, "j": 3, "g": 0, "n": 1, "p": 2, "bp": 6, "bc": 16, "diff": -10, "forfait": 0 }
     ],
     "groupeB": [
-      { "position": 1, "team": "FC VELPEAU", "points": 8, "j": 2, "g": 2, "n": 0, "p": 0, "bp": 17, "bc": 2, "diff": 15, "forfait": 0 },
-      { "position": 2, "team": "ARZ FC", "points": 5, "j": 2, "g": 1, "n": 0, "p": 1, "bp": 8, "bc": 9, "diff": -1, "forfait": 0 },
-      { "position": 3, "team": "FCPS", "points": 5, "j": 2, "g": 1, "n": 0, "p": 1, "bp": 7, "bc": 14, "diff": -7, "forfait": 0 },
-      { "position": 4, "team": "TS FC", "points": 2, "j": 2, "g": 0, "n": 0, "p": 2, "bp": 4, "bc": 11, "diff": -7, "forfait": 0 }
+      { "position": 1, "team": "FC VELPEAU", "points": 12, "j": 3, "g": 3, "n": 0, "p": 0, "bp": 23, "bc": 5, "diff": 18, "forfait": 0 },
+      { "position": 2, "team": "FCPS", "points": 7, "j": 3, "g": 1, "n": 1, "p": 1, "bp": 12, "bc": 19, "diff": -7, "forfait": 0 },
+      { "position": 3, "team": "ARZ FC", "points": 6, "j": 3, "g": 1, "n": 0, "p": 2, "bp": 11, "bc": 15, "diff": -4, "forfait": 0 },
+      { "position": 4, "team": "TS FC", "points": 4, "j": 3, "g": 0, "n": 1, "p": 2, "bp": 9, "bc": 16, "diff": -7, "forfait": 0 }
     ],
     "groupeC": [
-      { "position": 1, "team": "FC PARIS CLICHY C", "points": 8, "j": 2, "g": 2, "n": 0, "p": 0, "bp": 16, "bc": 6, "diff": 10, "forfait": 0 },
-      { "position": 2, "team": "TETE CRAMEE FC", "points": 8, "j": 2, "g": 2, "n": 0, "p": 0, "bp": 14, "bc": 5, "diff": 9, "forfait": 0 },
-      { "position": 3, "team": "INTERNATIONALE PARIS IV", "points": 2, "j": 2, "g": 0, "n": 0, "p": 2, "bp": 5, "bc": 13, "diff": -8, "forfait": 0 },
-      { "position": 4, "team": "FC HAB", "points": 2, "j": 2, "g": 0, "n": 0, "p": 2, "bp": 4, "bc": 9, "diff": -5, "forfait": 0 }
+      { "position": 1, "team": "FC PARIS CLICHY C", "points": 10, "j": 3, "g": 2, "n": 1, "p": 0, "bp": 23, "bc": 13, "diff": 10, "forfait": 0 },
+      { "position": 2, "team": "TETE CRAMEE FC", "points": 10, "j": 3, "g": 2, "n": 1, "p": 0, "bp": 21, "bc": 12, "diff": 9, "forfait": 0 },
+      { "position": 3, "team": "INTERNATIONALE PARIS IV", "points": 6, "j": 3, "g": 1, "n": 0, "p": 2, "bp": 11, "bc": 17, "diff": -6, "forfait": 0 },
+      { "position": 4, "team": "FC HAB", "points": 3, "j": 3, "g": 0, "n": 0, "p": 3, "bp": 8, "bc": 15, "diff": -7, "forfait": 0 }
     ],
     "groupeD": [
-      { "position": 1, "team": "PANATRECE", "points": 8, "j": 2, "g": 2, "n": 0, "p": 0, "bp": 12, "bc": 4, "diff": 8, "forfait": 0 },
-      { "position": 2, "team": "ATLAS LION FC", "points": 8, "j": 2, "g": 2, "n": 0, "p": 0, "bp": 7, "bc": 2, "diff": 5, "forfait": 0 },
-      { "position": 3, "team": "FC FOUKY", "points": 8, "j": 2, "g": 2, "n": 0, "p": 0, "bp": 7, "bc": 4, "diff": 3, "forfait": 0 },
-      { "position": 4, "team": "LAS ALPACAS", "points": 2, "j": 2, "g": 0, "n": 0, "p": 2, "bp": 5, "bc": 7, "diff": -2, "forfait": 0 },
-      { "position": 5, "team": "WOLF FC", "points": 2, "j": 2, "g": 0, "n": 0, "p": 2, "bp": 3, "bc": 10, "diff": -7, "forfait": 0 },
-      { "position": 6, "team": "FC FIVE", "points": 2, "j": 2, "g": 0, "n": 0, "p": 2, "bp": 2, "bc": 9, "diff": -7, "forfait": 0 }
+      { "position": 1, "team": "ATLAS LION FC", "points": 10, "j": 3, "g": 2, "n": 1, "p": 0, "bp": 10, "bc": 5, "diff": 5, "forfait": 0 },
+      { "position": 2, "team": "FC FOUKY", "points": 10, "j": 3, "g": 2, "n": 1, "p": 0, "bp": 10, "bc": 7, "diff": 3, "forfait": 0 },
+      { "position": 3, "team": "PANATRECE", "points": 9, "j": 3, "g": 2, "n": 0, "p": 1, "bp": 15, "bc": 9, "diff": 6, "forfait": 0 },
+      { "position": 4, "team": "LAS ALPACAS", "points": 6, "j": 3, "g": 1, "n": 0, "p": 2, "bp": 10, "bc": 13, "diff": -3, "forfait": 0 },
+      { "position": 5, "team": "FC FIVE", "points": 6, "j": 3, "g": 1, "n": 0, "p": 2, "bp": 7, "bc": 11, "diff": -4, "forfait": 0 },
+      { "position": 6, "team": "WOLF FC", "points": 3, "j": 3, "g": 0, "n": 0, "p": 3, "bp": 5, "bc": 15, "diff": -10, "forfait": 0 }
     ],
     "groupeE": [
-      { "position": 1, "team": "PASTA FC", "points": 8, "j": 2, "g": 2, "n": 0, "p": 0, "bp": 14, "bc": 2, "diff": 12, "forfait": 0 },
-      { "position": 2, "team": "UFC PARIS 17", "points": 5, "j": 2, "g": 1, "n": 0, "p": 1, "bp": 4, "bc": 2, "diff": 2, "forfait": 0 },
-      { "position": 3, "team": "DEMOS FC", "points": 5, "j": 2, "g": 1, "n": 0, "p": 1, "bp": 4, "bc": 4, "diff": 0, "forfait": 0 },
-      { "position": 4, "team": "BRIMBORION", "points": 1, "j": 2, "g": 0, "n": 0, "p": 2, "bp": 0, "bc": 14, "diff": -14, "forfait": 1 }
+      { "position": 1, "team": "PASTA FC", "points": 12, "j": 3, "g": 3, "n": 0, "p": 0, "bp": 19, "bc": 3, "diff": 16, "forfait": 0 },
+      { "position": 2, "team": "DEMOS FC", "points": 9, "j": 3, "g": 2, "n": 0, "p": 1, "bp": 8, "bc": 6, "diff": 2, "forfait": 0 },
+      { "position": 3, "team": "UFC PARIS 17", "points": 6, "j": 3, "g": 1, "n": 0, "p": 2, "bp": 5, "bc": 7, "diff": -2, "forfait": 0 },
+      { "position": 4, "team": "BRIMBORION", "points": 2, "j": 3, "g": 0, "n": 0, "p": 3, "bp": 2, "bc": 18, "diff": -16, "forfait": 1 }
     ]
   }
 }

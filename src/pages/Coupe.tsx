@@ -34,6 +34,11 @@ const Coupe: React.FC = () => {
   // Fonction pour vérifier si c'est TETE CRAMEE FC
   const isTeteCramee = (equipe: string) => equipe === 'TETE CRAMEE FC';
 
+  // Fonction pour récupérer les matchs des phases éliminatoires
+  const getEliminationMatches = (phase: string) => {
+    return cupMatches.filter(match => match.JourneeName === phase);
+  };
+
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="text-center mb-8">
@@ -393,23 +398,61 @@ const Coupe: React.FC = () => {
           
           {expandedPhases && (
             <div className="space-y-6 mt-6">
-            <div className="bg-gray-700 rounded-lg p-6">
-              <h3 className="text-xl font-bold text-orange-400 mb-4">Tour de cadrage - Samedi 25 octobre</h3>
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-                <div className="bg-gray-800 p-4 rounded-lg text-center">
-                  <p className="text-white font-medium">1er poule B <span className="text-orange-400">vs</span> 3ème poule D</p>
+            
+            {/* Section Qualifications */}
+            <div className="bg-blue-900 rounded-lg p-6">
+              <h3 className="text-xl font-bold text-blue-300 mb-4">🎯 Qualifications pour les phases éliminatoires</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                <div className="bg-blue-800 p-4 rounded-lg">
+                  <h4 className="font-bold text-blue-200 mb-2">Qualifiés directement en 1/4 :</h4>
+                  <ul className="text-blue-100 space-y-1">
+                    <li>• 1ers de chaque groupe (5 équipes)</li>
+                    <li className="text-orange-300">• OCCITAN FC B (Groupe A)</li>
+                    <li className="text-orange-300">• FC VELPEAU (Groupe B)</li>
+                    <li className="text-orange-300">• FC PARIS CLICHY C (Groupe C)</li>
+                    <li className="text-orange-300">• ATLAS LION FC (Groupe D)</li>
+                    <li className="text-orange-300">• PASTA FC (Groupe E)</li>
+                  </ul>
                 </div>
-                <div className="bg-gray-800 p-4 rounded-lg text-center">
-                  <p className="text-white font-medium">2ème poule D <span className="text-orange-400">vs</span> 2ème poule A</p>
-                </div>
-                <div className="bg-gray-800 p-4 rounded-lg text-center">
-                  <p className="text-white font-medium">1ère poule C <span className="text-orange-400">vs</span> 2ème poule E</p>
+                <div className="bg-blue-800 p-4 rounded-lg">
+                  <h4 className="font-bold text-blue-200 mb-2">Tour de cadrage :</h4>
+                  <ul className="text-blue-100 space-y-1">
+                    <li>• 2èmes et 3èmes de groupes</li>
+                    <li className="text-yellow-300">• FCPS vs PANATRECE</li>
+                    <li className="text-yellow-300">• FC FOUKY vs MDJ FC</li>
+                    <li className="text-green-300 font-bold">• TETE CRAMEE FC vs DEMOS FC</li>
+                  </ul>
                 </div>
               </div>
             </div>
 
             <div className="bg-gray-700 rounded-lg p-6">
-              <h3 className="text-xl font-bold text-orange-400 mb-4">1/4 de finale - Samedi 14 février</h3>
+              <h3 className="text-xl font-bold text-orange-400 mb-4">Tour de cadrage - Samedi 14 février</h3>
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+                {getEliminationMatches('Tour de cadrage').map((match, index) => (
+                  <div 
+                    key={index}
+                    className={`p-4 rounded-lg text-center ${
+                      isTeteCramee(match.Equipedom) || isTeteCramee(match.Equipeext)
+                        ? 'bg-gradient-to-r from-orange-800 to-orange-600 border-2 border-orange-400'
+                        : 'bg-gray-800'
+                    }`}
+                  >
+                    <p className={`font-medium ${
+                      isTeteCramee(match.Equipedom) || isTeteCramee(match.Equipeext)
+                        ? 'text-orange-100'
+                        : 'text-white'
+                    }`}>
+                      {match.Equipedom} <span className="text-orange-400">vs</span> {match.Equipeext}
+                    </p>
+                    <p className="text-gray-400 text-sm mt-1">{match.Terrain}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="bg-gray-700 rounded-lg p-6">
+              <h3 className="text-xl font-bold text-orange-400 mb-4">1/4 de finale - Samedi 14 mars</h3>
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                 <div className="bg-gray-800 p-4 rounded-lg text-center">
                   <p className="text-white font-medium">Vainqueur cadrage <span className="text-orange-400">vs</span> 1er poule A</p>
