@@ -1,5 +1,4 @@
-{
-  "coupe": [
+[
     {
       "UserId": 0,
       "ChampionnatName": "Coupe à 7",
@@ -41,9 +40,7 @@
       "EtatFinal": null,
       "Forfait": null,
       "competition": "Coupe"
-    }
-  ],
-  "ligue": [
+    },
     {
       "UserId": 0,
       "ChampionnatName": "Foot à 7 - Samedi - 1ère division Challenge",
@@ -759,4 +756,3 @@
     "competition": "Coupe"
   }
 ]
-}

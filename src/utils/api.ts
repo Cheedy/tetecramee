@@ -38,10 +38,8 @@ export const fetchMatches = async (): Promise<MatchData[] | { error: string }> =
 
 export const fetchNextAndLastMatch = async (): Promise<{ nextMatch: MatchData | null, lastMatch: MatchData | null } | { error: string }> => {
   try {
-    // Récupérer tous les matchs de TETE CRAMEE FC (Ligue + Coupe)
-    const coupeMatches = (allMatchesData.coupe || []).map(match => ({ ...match, competition: 'Coupe' }));
-    const ligueMatches = (allMatchesData.ligue || []).map(match => ({ ...match, competition: 'Ligue' }));
-    const allMatches = [...coupeMatches, ...ligueMatches];
+    // Récupérer tous les matchs directement depuis le tableau unique
+    const allMatches = allMatchesData as MatchData[];
 
     // Filtrer uniquement les matchs de TETE CRAMEE FC
     const teteCrameeMatches = allMatches.filter(match => 
@@ -49,6 +47,8 @@ export const fetchNextAndLastMatch = async (): Promise<{ nextMatch: MatchData | 
     );
 
     const now = new Date();
+    // Date d'aujourd'hui à minuit pour comparer les jours entiers
+    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
     
     // Fonction pour convertir dd/mm/yyyy en Date
     const parseDate = (dateStr: string | null): Date => {
@@ -67,10 +67,26 @@ export const fetchNextAndLastMatch = async (): Promise<{ nextMatch: MatchData | 
       return dateA.getTime() - dateB.getTime();
     });
 
-    // Chercher le prochain match dans les matchs avec dates SEULEMENT
+    // Debug temporaire
+    console.log('Current date:', now);
+    console.log('Today (midnight):', today);
+    console.log('Sorted matches:', sortedMatches.map(m => ({
+      date: m.Date,
+      parsed: parseDate(m.Date),
+      teams: `${m.Equipedom} vs ${m.Equipeext}`,
+      competition: m.competition
+    })));
+
+    // Chercher le prochain match (aujourd'hui ou après)
     let nextMatch = sortedMatches.find(match => {
       const matchDate = parseDate(match.Date);
-      return matchDate > now;
+      const isAfterOrToday = matchDate >= today;
+      console.log(`Match ${match.Equipedom} vs ${match.Equipeext} (${match.Date}):`, {
+        matchDate,
+        today,
+        isAfterOrToday
+      });
+      return isAfterOrToday;
     }) || null;
     
     // Chercher le dernier match joué (avec score) de TETE CRAMEE FC
