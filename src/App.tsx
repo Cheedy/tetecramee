@@ -6,6 +6,7 @@ import Matches from './pages/Matches'
 import LeagueTablePage from './pages/LeagueTablePage'
 import Statistics from './pages/Statistics'
 import Coupe from './pages/Coupe'
+import Ligue from './pages/Ligue'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <main className="container mx-auto px-4 py-8">
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/ligue" element={<Ligue />} />
             <Route path="/matches" element={<Matches />} />
             <Route path="/classement" element={<LeagueTablePage />} />
             <Route path="/coupe" element={<Coupe />} />

@@ -89,19 +89,24 @@ const LeagueTable: React.FC = () => {
               <td className="py-2 px-4">{team.Bc}</td>
               <td className="py-2 px-4 font-bold">{team.Points}</td>
               <td className="py-2 px-4">
-                {team.Victoire + team.Egalite + team.Defaite > 0 ? (
-                  team.CinqDernier.map((result, i) => (
-                    result ? (
-                      <span key={i} className={`inline-block w-3 h-3 rounded-full mr-1 ${
-                        result === 'won' ? 'bg-green-500' :
-                        result === 'draw' ? 'bg-yellow-500' :
-                        'bg-red-500'
-                      }`}></span>
-                    ) : null
-                  ))
-                ) : (
-                  <span className="text-gray-500 text-xs">-</span>
-                )}
+                <div className="flex gap-1">
+                  {team.Victoire + team.Egalite + team.Defaite > 0 ? (
+                    team.CinqDernier.map((result, i) => (
+                      result ? (
+                        <span key={i} className={`inline-flex items-center justify-center w-5 h-5 rounded-full text-[10px] font-bold ${
+                          result === 'V' ? 'bg-green-500 text-white' :
+                          result === 'N' ? 'bg-yellow-500 text-gray-900' :
+                          result === 'D' ? 'bg-red-500 text-white' :
+                          ''
+                        }`}>
+                          {result}
+                        </span>
+                      ) : null
+                    ))
+                  ) : (
+                    <span className="text-gray-500 text-xs">-</span>
+                  )}
+                </div>
               </td>
             </tr>
           ))}

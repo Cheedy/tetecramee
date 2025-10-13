@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Calendar, Trophy, BarChart3, Menu, X, Award } from 'lucide-react'
+import { Calendar, Trophy, BarChart3, Menu, X, Award, Shield } from 'lucide-react'
 
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -26,6 +26,7 @@ const Navbar: React.FC = () => {
 
         <ul className="hidden md:flex space-x-6">
           <NavItem to="/matches" icon={Calendar} text="Matchs" />
+          <NavItem to="/ligue" icon={Shield} text="Ligue" />
           <NavItem to="/classement" icon={Trophy} text="Classement" />
           <NavItem to="/coupe" icon={Award} text="Coupe" />
           <NavItem to="/statistiques" icon={BarChart3} text="Statistiques" />
@@ -36,6 +37,7 @@ const Navbar: React.FC = () => {
         <div className="md:hidden">
           <ul className="flex flex-col space-y-4 mt-4">
             <NavItem to="/matches" icon={Calendar} text="Matchs" />
+            <NavItem to="/ligue" icon={Shield} text="Ligue" />
             <NavItem to="/classement" icon={Trophy} text="Classement" />
             <NavItem to="/coupe" icon={Award} text="Coupe" />
             <NavItem to="/statistiques" icon={BarChart3} text="Statistiques" />
