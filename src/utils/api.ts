@@ -151,7 +151,8 @@ export const getTeamLogo = (logoName: string | null, teamName?: string): string 
   const teamLogos: { [key: string]: string } = {
     "BLACK PANAMA FC": "https://i.imgur.com/Dnepiih.png",
     "TETE CRAMEE FC": "https://i.imgur.com/emlZEjD.png",
-    "LAS ALPACAS": "https://i.imgur.com/i684d6j.jpeg"
+    "LAS ALPACAS": "https://i.imgur.com/i684d6j.jpeg",
+    "DEMOS FC": "https://i.imgur.com/tNfBZOS.png"
   };
 
   // Si on a un nom d'équipe et qu'il correspond à nos logos spécifiques

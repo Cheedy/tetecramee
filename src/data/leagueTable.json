@@ -1,14 +1,36 @@
 [
   {
-    "IdEquipe": 1,
-    "Nom": "ARZ FC",
-    "Points": 4,
-    "Victoire": 1,
+    "IdEquipe": 11,
+    "Nom": "TETE CRAMEE FC",
+    "Points": 8,
+    "Victoire": 2,
     "Egalite": 0,
     "Defaite": 0,
-    "Bp": 5,
+    "Bp": 12,
     "Bc": 2,
-    "CinqDernier": ["V", "", "", "", ""]
+    "CinqDernier": ["V", "V", "", "", ""]
+  },
+  {
+    "IdEquipe": 1,
+    "Nom": "ARZ FC",
+    "Points": 8,
+    "Victoire": 2,
+    "Egalite": 0,
+    "Defaite": 0,
+    "Bp": 8,
+    "Bc": 2,
+    "CinqDernier": ["V", "V", "", "", ""]
+  },
+  {
+    "IdEquipe": 4,
+    "Nom": "DEMOS FC",
+    "Points": 6,
+    "Victoire": 1,
+    "Egalite": 1,
+    "Defaite": 0,
+    "Bp": 5,
+    "Bc": 4,
+    "CinqDernier": ["N", "V", "", "", ""]
   },
   {
     "IdEquipe": 9,
@@ -22,30 +44,8 @@
     "CinqDernier": ["V", "", "", "", ""]
   },
   {
-    "IdEquipe": 11,
-    "Nom": "TETE CRAMEE FC",
-    "Points": 4,
-    "Victoire": 1,
-    "Egalite": 0,
-    "Defaite": 0,
-    "Bp": 3,
-    "Bc": 0,
-    "CinqDernier": ["V", "", "", "", ""]
-  },
-  {
-    "IdEquipe": 8,
-    "Nom": "TOUT PUISSANT TOLOSA",
-    "Points": 4,
-    "Victoire": 1,
-    "Egalite": 0,
-    "Defaite": 0,
-    "Bp": 5,
-    "Bc": 3,
-    "CinqDernier": ["V", "", "", "", ""]
-  },
-  {
-    "IdEquipe": 4,
-    "Nom": "DEMOS FC",
+    "IdEquipe": 3,
+    "Nom": "MDJ FC",
     "Points": 4,
     "Victoire": 1,
     "Egalite": 0,
@@ -66,6 +66,39 @@
     "CinqDernier": ["V", "", "", "", ""]
   },
   {
+    "IdEquipe": 8,
+    "Nom": "TOUT PUISSANT TOLOSA",
+    "Points": 4,
+    "Victoire": 1,
+    "Egalite": 0,
+    "Defaite": 1,
+    "Bp": 5,
+    "Bc": 6,
+    "CinqDernier": ["D", "V", "", "", ""]
+  },
+  {
+    "IdEquipe": 13,
+    "Nom": "CONTROLES DESORIENTES ASC",
+    "Points": 3,
+    "Victoire": 0,
+    "Egalite": 1,
+    "Defaite": 1,
+    "Bp": 2,
+    "Bc": 5,
+    "CinqDernier": ["N", "D", "", "", ""]
+  },
+  {
+    "IdEquipe": 7,
+    "Nom": "FC FIVE",
+    "Points": 2,
+    "Victoire": 0,
+    "Egalite": 0,
+    "Defaite": 2,
+    "Bp": 5,
+    "Bc": 7,
+    "CinqDernier": ["D", "D", "", "", ""]
+  },
+  {
     "IdEquipe": 5,
     "Nom": "WOLF FC",
     "Points": 1,
@@ -74,17 +107,6 @@
     "Defaite": 1,
     "Bp": 2,
     "Bc": 3,
-    "CinqDernier": ["D", "", "", "", ""]
-  },
-  {
-    "IdEquipe": 7,
-    "Nom": "FC FIVE",
-    "Points": 1,
-    "Victoire": 0,
-    "Egalite": 0,
-    "Defaite": 1,
-    "Bp": 3,
-    "Bc": 4,
     "CinqDernier": ["D", "", "", "", ""]
   },
   {
@@ -110,17 +132,6 @@
     "CinqDernier": ["D", "", "", "", ""]
   },
   {
-    "IdEquipe": 13,
-    "Nom": "CONTROLES DESORIENTES ASC",
-    "Points": 1,
-    "Victoire": 0,
-    "Egalite": 0,
-    "Defaite": 1,
-    "Bp": 0,
-    "Bc": 3,
-    "CinqDernier": ["D", "", "", "", ""]
-  },
-  {
     "IdEquipe": 14,
     "Nom": "BLACK PANAMA FC",
     "Points": 1,
@@ -132,25 +143,14 @@
     "CinqDernier": ["D", "", "", "", ""]
   },
   {
-    "IdEquipe": 3,
-    "Nom": "MDJ FC",
-    "Points": 0,
-    "Victoire": 0,
-    "Egalite": 0,
-    "Defaite": 0,
-    "Bp": 0,
-    "Bc": 0,
-    "CinqDernier": ["", "", "", "", ""]
-  },
-  {
     "IdEquipe": 6,
     "Nom": "FC HAB",
-    "Points": 0,
+    "Points": 1,
     "Victoire": 0,
     "Egalite": 0,
-    "Defaite": 0,
-    "Bp": 0,
-    "Bc": 0,
-    "CinqDernier": ["", "", "", "", ""]
+    "Defaite": 1,
+    "Bp": 2,
+    "Bc": 9,
+    "CinqDernier": ["D", "", "", "", ""]
   }
 ]

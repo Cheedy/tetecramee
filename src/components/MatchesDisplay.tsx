@@ -65,6 +65,20 @@ const MatchesDisplay: React.FC = () => {
       return `${day} ${monthNames[parseInt(month) - 1]}`;
     };
 
+    const getFormattedTime = () => {
+      if (!match.Date || match.Date === null) {
+        return "";
+      }
+      // Si la date est au format dd/mm/yyyy, on retourne 20:00 par défaut
+      if (!match.Date.includes('/Date(')) {
+        return "20:00";
+      }
+      // Sinon on parse le timestamp
+      const timestamp = parseInt(match.Date.slice(6, -2));
+      const date = new Date(timestamp);
+      return date.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+    };
+
     return (
       <div className="relative mb-4 md:mb-0 md:w-1/2">
         <img
@@ -94,6 +108,11 @@ const MatchesDisplay: React.FC = () => {
               <span className="text-xs">
                 {getFormattedDate()}
               </span>
+              {match.Scoredom === null && (
+                <span className="text-xs text-orange-400 font-semibold">
+                  {getFormattedTime()}
+                </span>
+              )}
             </div>
             <div className="flex flex-col items-center">
               <div className="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center text-black font-bold overflow-hidden">

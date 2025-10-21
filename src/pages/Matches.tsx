@@ -172,6 +172,14 @@ const Matches: React.FC = () => {
           const matchDate = new Date(parseInt(match.Date.slice(6, -2)));
           return matchDate.toLocaleDateString('fr-FR', { day: 'numeric', month: 'numeric' });
         };
+
+        const getFormattedTime = () => {
+          if (!match.Date || match.Date === null) {
+            return "";
+          }
+          const matchDate = new Date(parseInt(match.Date.slice(6, -2)));
+          return matchDate.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+        };
         
         const isPlayed = match.Scoredom !== null && match.Scoreext !== null
         const isTeteCrameeInvolved = match.Equipedom === TEAM_NAME || match.Equipeext === TEAM_NAME
@@ -195,7 +203,10 @@ const Matches: React.FC = () => {
                 {isPlayed ? (
                   <p className="text-sm sm:text-base font-bold">{match.Scoredom} - {match.Scoreext}</p>
                 ) : (
-                  <p className="text-sm sm:text-base font-bold">VS</p>
+                  <>
+                    <p className="text-sm sm:text-base font-bold">VS</p>
+                    <p className="text-xs text-orange-400 font-semibold">{getFormattedTime()}</p>
+                  </>
                 )}
                 <p className="text-xs text-gray-400 truncate">{match.Terrain}</p>
               </div>
